@@ -1,0 +1,1 @@
+window.HECKLE_API = "";

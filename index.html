@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>HeckleTroll</title>
+<script src="heckle-troll-v1-config.js"></script>
+<style>
+  :root {
+    --paper: #fffdf6;
+    --ink: #111111;
+    --blue: #1f5fff;
+    --blue-soft: #dfe8ff;
+    --yellow: #ffe25a;
+    --red: #ff4d3d;
+    --muted: #5a5a5a;
+    --card: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--paper); color: var(--ink); }
+  body {
+    font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.45;
+    padding: 0 16px 48px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  header {
+    padding: 18px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .badge {
+    font-weight: 900;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    background: var(--ink);
+    color: var(--yellow);
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  h1 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+  h1 span { color: var(--blue); }
+  .tagline { margin: 0 0 14px; color: var(--muted); font-size: 14px; }
+  nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+  }
+  nav button {
+    flex: 1;
+    min-width: 0;
+    border: 3px solid var(--ink);
+    background: var(--card);
+    font: inherit;
+    font-weight: 800;
+    padding: 10px 6px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 0 var(--ink);
+    cursor: pointer;
+    color: var(--ink);
+  }
+  nav button.on { background: var(--blue); color: #fff; }
+  .panel { display: none; }
+  .panel.on { display: block; }
+  .card {
+    background: var(--card);
+    border: 3px solid var(--ink);
+    border-radius: 14px;
+    box-shadow: 5px 5px 0 var(--ink);
+    padding: 16px;
+    margin-bottom: 18px;
+  }
+  .card h2 { margin: 0 0 8px; font-size: 18px; font-weight: 900; }
+  .row { display: flex; gap: 8px; }
+  input[type=text], select {
+    flex: 1;
+    min-width: 0;
+    font: inherit;
+    padding: 10px 12px;
+    border: 3px solid var(--ink);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--ink);
+  }
+  .btn {
+    border: 3px solid var(--ink);
+    background: var(--yellow);
+    color: var(--ink);
+    font: inherit;
+    font-weight: 900;
+    padding: 10px 14px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 0 var(--ink);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn.blue { background: var(--blue); color: #fff; }
+  .btn:disabled { opacity: 0.5; cursor: default; }
+  .btn:active:not(:disabled) { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+  .repo-list { margin-top: 12px; max-height: 320px; overflow-y: auto; border-top: 2px solid var(--ink); }
+  .repo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 2px;
+    border-bottom: 1px solid #ddd;
+  }
+  .repo .name { font-weight: 800; word-break: break-word; }
+  .repo .desc { color: var(--muted); font-size: 13px; }
+  .repo .btn { padding: 6px 10px; font-size: 14px; }
+  .roast p { margin: 0 0 12px; }
+  .roast p.fix {
+    background: var(--blue-soft);
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .meta { color: var(--muted); font-size: 13px; margin-bottom: 8px; }
+  .heckle { border-top: 2px solid var(--ink); padding-top: 12px; margin-top: 12px; }
+  .heckle:first-child { border-top: 0; margin-top: 0; padding-top: 0; }
+  .heckle a { color: var(--blue); font-weight: 800; }
+  .status-grid { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 14px; }
+  .status-grid div:nth-child(odd) { font-weight: 800; }
+  .err {
+    background: #ffe3e0;
+    border: 2px solid var(--red);
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-top: 10px;
+    font-size: 14px;
+    display: none;
+    word-break: break-word;
+  }
+  .err.on { display: block; }
+  .spin { display: inline-block; animation: wob 0.6s infinite alternate; }
+  @keyframes wob { from { transform: rotate(-8deg); } to { transform: rotate(8deg); } }
+  .empty { color: var(--muted); font-style: italic; }
+  label.small { display: block; font-weight: 800; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="badge">CONTROL TROLL</div>
+  <h1>Heckle<span>Troll</span></h1>
+</header>
+<p class="tagline">Bug check plus trash talk. Every push gets roasted right on the commit.</p>
+
+<nav>
+  <button data-tab="roast" class="on">Roast</button>
+  <button data-tab="fleet">Fleet</button>
+  <button data-tab="heckles">Heckles</button>
+  <button data-tab="status">Status</button>
+</nav>
+
+<section class="panel on" id="tab-roast">
+  <div class="card">
+    <h2>Pick a repo to roast</h2>
+    <div class="row">
+      <input type="text" id="filter" aria-label="Filter repos" autocomplete="off">
+      <button class="btn blue" id="reload">Load</button>
+    </div>
+    <div class="repo-list" id="repos"><p class="empty">Tap Load to pull your repos.</p></div>
+    <div class="err" id="repoErr"></div>
+  </div>
+  <div class="card" id="roastCard" style="display:none">
+    <h2 id="roastTitle">Roast</h2>
+    <div class="roast" id="roastOut"></div>
+  </div>
+</section>
+
+<section class="panel" id="tab-fleet">
+  <div class="card">
+    <h2>Roast the whole fleet</h2>
+    <p class="meta">Reads every repo name, description and page opening, then calls out the clones, the dead weight and the keepers.</p>
+    <button class="btn" id="fleetGo">Heckle the fleet</button>
+    <div class="err" id="fleetErr"></div>
+  </div>
+  <div class="card" id="fleetCard" style="display:none">
+    <h2>Fleet verdict</h2>
+    <div class="meta" id="fleetMeta"></div>
+    <div class="roast" id="fleetOut"></div>
+  </div>
+</section>
+
+<section class="panel" id="tab-heckles">
+  <div class="card">
+    <h2>Commit heckles</h2>
+    <p class="meta">Every new push gets a roast posted as a commit comment. Put [no heckle] in a commit message to sneak one past.</p>
+    <div class="row">
+      <button class="btn blue" id="hecklesLoad">Refresh</button>
+      <button class="btn" id="pollNow">Check pushes now</button>
+    </div>
+    <div class="err" id="heckleErr"></div>
+  </div>
+  <div class="card">
+    <div id="heckleList"><p class="empty">Nothing heckled yet this run.</p></div>
+  </div>
+</section>
+
+<section class="panel" id="tab-status">
+  <div class="card">
+    <h2>Server</h2>
+    <div class="status-grid" id="statusGrid"></div>
+    <div class="err" id="statusErr"></div>
+  </div>
+  <div class="card">
+    <label class="small" for="apiInput">Backend address</label>
+    <div class="row">
+      <input type="text" id="apiInput" autocomplete="off" spellcheck="false">
+      <button class="btn blue" id="apiSave">Save</button>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var STORE_KEY = "heckle-troll-v1-api";
+  function storedApi() {
+    try { return localStorage.getItem(STORE_KEY) || ""; } catch (e) { return ""; }
+  }
+  function api() {
+    var v = storedApi() || window.HECKLE_API || "";
+    return v.replace(/\/+$/, "");
+  }
+  function $(id) { return document.getElementById(id); }
+
+  function showErr(id, msg) {
+    var el = $(id);
+    el.textContent = msg || "";
+    el.classList.toggle("on", !!msg);
+  }
+
+  async function call(path, method, body) {
+    var base = api();
+    if (!base) throw new Error("No backend address yet. Set it on the Status tab.");
+    var r = await fetch(base + path, {
+      method: method || "GET",
+      headers: body ? { "Content-Type": "application/json" } : {},
+      body: body ? JSON.stringify(body) : undefined
+    });
+    var j = await r.json().catch(function () { return {}; });
+    if (!r.ok) throw new Error(j.error || ("Server said " + r.status));
+    return j;
+  }
+
+  function renderRoast(el, text) {
+    el.innerHTML = "";
+    String(text || "").split(/\n\s*\n/).forEach(function (para) {
+      var t = para.trim();
+      if (!t) return;
+      var p = document.createElement("p");
+      if (/^(Fix it:|Merge these:|Kill or finish these:|Keep and polish these:)/.test(t)) p.className = "fix";
+      p.textContent = t;
+      el.appendChild(p);
+    });
+  }
+
+  function busy(btn, on, label) {
+    if (on) {
+      btn.dataset.label = btn.textContent;
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spin">&#9998;</span> ' + (label || "Working");
+    } else {
+      btn.disabled = false;
+      btn.textContent = btn.dataset.label || btn.textContent;
+    }
+  }
+
+  document.querySelectorAll("nav button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll("nav button").forEach(function (x) { x.classList.toggle("on", x === b); });
+      document.querySelectorAll(".panel").forEach(function (p) { p.classList.toggle("on", p.id === "tab-" + b.dataset.tab); });
+      if (b.dataset.tab === "status") loadStatus();
+      if (b.dataset.tab === "heckles") loadHeckles();
+      if (b.dataset.tab === "fleet") loadFleetCache();
+    });
+  });
+
+  var repos = [];
+  function drawRepos() {
+    var q = $("filter").value.trim().toLowerCase();
+    var list = $("repos");
+    list.innerHTML = "";
+    var shown = repos.filter(function (r) {
+      return !q || r.name.toLowerCase().indexOf(q) >= 0 || (r.description || "").toLowerCase().indexOf(q) >= 0;
+    });
+    if (!shown.length) { list.innerHTML = '<p class="empty">No repos match.</p>'; return; }
+    shown.forEach(function (r) {
+      var row = document.createElement("div");
+      row.className = "repo";
+      var info = document.createElement("div");
+      var n = document.createElement("div"); n.className = "name"; n.textContent = r.name;
+      var d = document.createElement("div"); d.className = "desc"; d.textContent = r.description || "no description";
+      info.appendChild(n); info.appendChild(d);
+      var go = document.createElement("button");
+      go.className = "btn"; go.textContent = "Roast";
+      go.addEventListener("click", function () { roast(r.name, go); });
+      row.appendChild(info); row.appendChild(go);
+      list.appendChild(row);
+    });
+  }
+
+  async function loadRepos() {
+    var btn = $("reload");
+    busy(btn, true, "Loading");
+    showErr("repoErr", "");
+    try {
+      var j = await call("/api/repos");
+      repos = j.repos || [];
+      drawRepos();
+    } catch (e) {
+      showErr("repoErr", e.message);
+    }
+    busy(btn, false);
+  }
+
+  async function roast(name, btn) {
+    busy(btn, true, "Heckling");
+    showErr("repoErr", "");
+    try {
+      var j = await call("/api/roast", "POST", { repo: name });
+      $("roastCard").style.display = "block";
+      $("roastTitle").textContent = "Roast of " + name;
+      renderRoast($("roastOut"), j.text);
+      $("roastCard").scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch (e) {
+      showErr("repoErr", e.message);
+    }
+    busy(btn, false);
+  }
+
+  async function loadFleetCache() {
+    try {
+      var j = await call("/api/fleet");
+      if (j.text) showFleet(j);
+    } catch (e) {}
+  }
+
+  function showFleet(j) {
+    $("fleetCard").style.display = "block";
+    $("fleetMeta").textContent = j.count + " repos judged at " + new Date(j.at).toLocaleString();
+    renderRoast($("fleetOut"), j.text);
+  }
+
+  async function fleet() {
+    var btn = $("fleetGo");
+    busy(btn, true, "Reading the whole fleet");
+    showErr("fleetErr", "");
+    try {
+      showFleet(await call("/api/fleet", "POST"));
+    } catch (e) {
+      showErr("fleetErr", e.message);
+    }
+    busy(btn, false);
+  }
+
+  async function loadHeckles() {
+    showErr("heckleErr", "");
+    try {
+      var j = await call("/api/heckles");
+      var list = $("heckleList");
+      list.innerHTML = "";
+      if (!j.heckles || !j.heckles.length) {
+        list.innerHTML = '<p class="empty">Nothing heckled yet this run.</p>';
+        return;
+      }
+      j.heckles.forEach(function (h) {
+        var box = document.createElement("div");
+        box.className = "heckle";
+        var meta = document.createElement("div");
+        meta.className = "meta";
+        meta.textContent = h.repo + " at " + h.sha + ", " + new Date(h.at).toLocaleString() + (h.posted ? "" : ", not posted");
+        var body = document.createElement("div");
+        body.className = "roast";
+        renderRoast(body, h.text);
+        box.appendChild(meta);
+        box.appendChild(body);
+        if (h.url) {
+          var a = document.createElement("a");
+          a.href = h.url; a.target = "_blank"; a.rel = "noopener";
+          a.textContent = "See it on GitHub";
+          box.appendChild(a);
+        }
+        list.appendChild(box);
+      });
+    } catch (e) {
+      showErr("heckleErr", e.message);
+    }
+  }
+
+  async function pollNow() {
+    var btn = $("pollNow");
+    busy(btn, true, "Checking");
+    showErr("heckleErr", "");
+    try {
+      var j = await call("/api/poll", "POST");
+      if (j.lastPollError) showErr("heckleErr", j.lastPollError);
+      await loadHeckles();
+    } catch (e) {
+      showErr("heckleErr", e.message);
+    }
+    busy(btn, false);
+  }
+
+  async function loadStatus() {
+    $("apiInput").value = api();
+    showErr("statusErr", "");
+    var g = $("statusGrid");
+    g.innerHTML = "";
+    try {
+      var s = await call("/api/status");
+      var rows = [
+        ["GitHub user", s.user || "not checked yet"],
+        ["Model", s.model],
+        ["Posting comments", s.live ? "on" : "off"],
+        ["Checks pushes every", s.pollSeconds + " seconds"],
+        ["Last check", s.lastPoll ? new Date(s.lastPoll).toLocaleString() : "not yet"],
+        ["Anthropic key", s.hasAnthropicKey ? "set" : "missing"],
+        ["GitHub token", s.hasGithubToken ? "set" : "missing"]
+      ];
+      rows.forEach(function (r) {
+        var a = document.createElement("div"); a.textContent = r[0];
+        var b = document.createElement("div"); b.textContent = r[1];
+        g.appendChild(a); g.appendChild(b);
+      });
+      if (s.lastPollError) showErr("statusErr", s.lastPollError);
+    } catch (e) {
+      showErr("statusErr", e.message);
+    }
+  }
+
+  $("apiSave").addEventListener("click", function () {
+    var v = $("apiInput").value.trim();
+    if (v && !/^https?:\/\//.test(v)) v = "https://" + v;
+    try { localStorage.setItem(STORE_KEY, v); } catch (e) {}
+    loadStatus();
+  });
+  $("reload").addEventListener("click", loadRepos);
+  $("filter").addEventListener("input", drawRepos);
+  $("fleetGo").addEventListener("click", fleet);
+  $("hecklesLoad").addEventListener("click", loadHeckles);
+  $("pollNow").addEventListener("click", pollNow);
+
+  if (api()) loadRepos();
+})();
+</script>
+</body>
+</html>
