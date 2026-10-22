@@ -1,0 +1,44 @@
+name: heckle-troll-v2-heckler
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: heckle-troll
+  cancel-in-progress: false
+
+jobs:
+  heckle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Get heckler code
+        uses: actions/checkout@v4
+
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Heckle new pushes
+        env:
+          HECKLE_GH_TOKEN: ${{ secrets.HECKLE_GH_TOKEN }}
+          SHARED_SERVER_URL: ${{ vars.SHARED_SERVER_URL }}
+        run: node heckle-troll-v2-heckler.js
+
+      - name: Save heckle log
+        if: always()
+        run: |
+          if [ -n "$(git status --porcelain heckle-troll-v2-log.json)" ]; then
+            git config user.name "heckle-troll"
+            git config user.email "heckle-troll@users.noreply.github.com"
+            git add heckle-troll-v2-log.json
+            git commit -q -m "Update heckle log [no heckle]"
+            git pull --rebase -q origin main
+            git push -q
+          fi

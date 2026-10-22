@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/heckle-troll-v2.html" }
+  ],
+  "functions": {
+    "api/heckle-troll-v2.js": { "maxDuration": 300 }
+  }
+}

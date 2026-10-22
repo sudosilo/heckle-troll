@@ -4,8 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light">
-<title>HeckleTroll</title>
-<script src="heckle-troll-v1-config.js"></script>
+<title>HeckleTroll v2</title>
 <style>
   :root {
     --paper: #fffdf6;
@@ -169,9 +168,9 @@
     <h2>Pick a repo to roast</h2>
     <div class="row">
       <input type="text" id="filter" aria-label="Filter repos" autocomplete="off">
-      <button class="btn blue" id="reload">Load</button>
+      <button class="btn blue" id="reload">Reload</button>
     </div>
-    <div class="repo-list" id="repos"><p class="empty">Tap Load to pull your repos.</p></div>
+    <div class="repo-list" id="repos"><p class="empty">Pulling your repos.</p></div>
     <div class="err" id="repoErr"></div>
   </div>
   <div class="card" id="roastCard" style="display:none">
@@ -197,15 +196,16 @@
 <section class="panel" id="tab-heckles">
   <div class="card">
     <h2>Commit heckles</h2>
-    <p class="meta">Every new push gets a roast posted as a commit comment. Put [no heckle] in a commit message to sneak one past.</p>
+    <p class="meta">Every new push gets a roast posted as a commit comment, checked about every ten minutes. Put [no heckle] in a commit message to sneak one past.</p>
     <div class="row">
       <button class="btn blue" id="hecklesLoad">Refresh</button>
       <button class="btn" id="pollNow">Check pushes now</button>
     </div>
+    <p class="meta" id="heckleNote"></p>
     <div class="err" id="heckleErr"></div>
   </div>
   <div class="card">
-    <div id="heckleList"><p class="empty">Nothing heckled yet this run.</p></div>
+    <div id="heckleList"><p class="empty">Nothing heckled yet.</p></div>
   </div>
 </section>
 
@@ -215,25 +215,13 @@
     <div class="status-grid" id="statusGrid"></div>
     <div class="err" id="statusErr"></div>
   </div>
-  <div class="card">
-    <label class="small" for="apiInput">Backend address</label>
-    <div class="row">
-      <input type="text" id="apiInput" autocomplete="off" spellcheck="false">
-      <button class="btn blue" id="apiSave">Save</button>
-    </div>
-  </div>
 </section>
 
 <script>
 (function () {
-  var STORE_KEY = "heckle-troll-v1-api";
-  function storedApi() {
-    try { return localStorage.getItem(STORE_KEY) || ""; } catch (e) { return ""; }
-  }
-  function api() {
-    var v = storedApi() || window.HECKLE_API || "";
-    return v.replace(/\/+$/, "");
-  }
+  var API = "/api/heckle-troll-v2";
+  var LOG_URL = "https://raw.githubusercontent.com/sudosilo/heckle-troll/main/heckle-troll-v2-log.json";
+  var FLEET_KEY = "heckle-troll-v2-fleet";
   function $(id) { return document.getElementById(id); }
 
   function showErr(id, msg) {
@@ -242,10 +230,8 @@
     el.classList.toggle("on", !!msg);
   }
 
-  async function call(path, method, body) {
-    var base = api();
-    if (!base) throw new Error("No backend address yet. Set it on the Status tab.");
-    var r = await fetch(base + path, {
+  async function call(what, method, body) {
+    var r = await fetch(API + "?do=" + what, {
       method: method || "GET",
       headers: body ? { "Content-Type": "application/json" } : {},
       body: body ? JSON.stringify(body) : undefined
@@ -317,7 +303,7 @@
     busy(btn, true, "Loading");
     showErr("repoErr", "");
     try {
-      var j = await call("/api/repos");
+      var j = await call("repos");
       repos = j.repos || [];
       drawRepos();
     } catch (e) {
@@ -330,7 +316,7 @@
     busy(btn, true, "Heckling");
     showErr("repoErr", "");
     try {
-      var j = await call("/api/roast", "POST", { repo: name });
+      var j = await call("roast", "POST", { repo: name });
       $("roastCard").style.display = "block";
       $("roastTitle").textContent = "Roast of " + name;
       renderRoast($("roastOut"), j.text);
@@ -341,10 +327,10 @@
     busy(btn, false);
   }
 
-  async function loadFleetCache() {
+  function loadFleetCache() {
     try {
-      var j = await call("/api/fleet");
-      if (j.text) showFleet(j);
+      var j = JSON.parse(localStorage.getItem(FLEET_KEY) || "null");
+      if (j && j.text) showFleet(j);
     } catch (e) {}
   }
 
@@ -359,21 +345,29 @@
     busy(btn, true, "Reading the whole fleet");
     showErr("fleetErr", "");
     try {
-      showFleet(await call("/api/fleet", "POST"));
+      var j = await call("fleet", "POST");
+      try { localStorage.setItem(FLEET_KEY, JSON.stringify(j)); } catch (e) {}
+      showFleet(j);
     } catch (e) {
       showErr("fleetErr", e.message);
     }
     busy(btn, false);
   }
 
+  async function readLog() {
+    var r = await fetch(LOG_URL + "?t=" + Date.now(), { cache: "no-store" });
+    if (!r.ok) throw new Error("Heckle log not found yet");
+    return r.json();
+  }
+
   async function loadHeckles() {
     showErr("heckleErr", "");
     try {
-      var j = await call("/api/heckles");
+      var j = await readLog();
       var list = $("heckleList");
       list.innerHTML = "";
       if (!j.heckles || !j.heckles.length) {
-        list.innerHTML = '<p class="empty">Nothing heckled yet this run.</p>';
+        list.innerHTML = '<p class="empty">Nothing heckled yet.</p>';
         return;
       }
       j.heckles.forEach(function (h) {
@@ -381,7 +375,7 @@
         box.className = "heckle";
         var meta = document.createElement("div");
         meta.className = "meta";
-        meta.textContent = h.repo + " at " + h.sha + ", " + new Date(h.at).toLocaleString() + (h.posted ? "" : ", not posted");
+        meta.textContent = h.repo + " at " + h.sha + ", " + new Date(h.at).toLocaleString();
         var body = document.createElement("div");
         body.className = "roast";
         renderRoast(body, h.text);
@@ -405,9 +399,8 @@
     busy(btn, true, "Checking");
     showErr("heckleErr", "");
     try {
-      var j = await call("/api/poll", "POST");
-      if (j.lastPollError) showErr("heckleErr", j.lastPollError);
-      await loadHeckles();
+      await call("check", "POST");
+      $("heckleNote").textContent = "Check started. Tap Refresh in a couple minutes.";
     } catch (e) {
       showErr("heckleErr", e.message);
     }
@@ -415,45 +408,42 @@
   }
 
   async function loadStatus() {
-    $("apiInput").value = api();
     showErr("statusErr", "");
     var g = $("statusGrid");
     g.innerHTML = "";
+    var rows = [];
+    var errs = [];
     try {
-      var s = await call("/api/status");
-      var rows = [
-        ["GitHub user", s.user || "not checked yet"],
-        ["Model", s.model],
-        ["Posting comments", s.live ? "on" : "off"],
-        ["Checks pushes every", s.pollSeconds + " seconds"],
-        ["Last check", s.lastPoll ? new Date(s.lastPoll).toLocaleString() : "not yet"],
-        ["Anthropic key", s.hasAnthropicKey ? "set" : "missing"],
-        ["GitHub token", s.hasGithubToken ? "set" : "missing"]
-      ];
-      rows.forEach(function (r) {
-        var a = document.createElement("div"); a.textContent = r[0];
-        var b = document.createElement("div"); b.textContent = r[1];
-        g.appendChild(a); g.appendChild(b);
-      });
-      if (s.lastPollError) showErr("statusErr", s.lastPollError);
+      var s = await call("status");
+      rows.push(["GitHub account", s.owner]);
+      rows.push(["GitHub token", s.githubToken ? "set" : "missing"]);
+      rows.push(["Shared server", s.sharedServer]);
     } catch (e) {
-      showErr("statusErr", e.message);
+      errs.push(e.message);
     }
+    try {
+      var log = await readLog();
+      rows.push(["Last push check", log.lastChecked ? new Date(log.lastChecked).toLocaleString() : "not yet"]);
+      rows.push(["Heckles on file", String((log.heckles || []).length)]);
+      if (log.lastError) errs.push(log.lastError);
+    } catch (e) {
+      rows.push(["Last push check", "not yet"]);
+    }
+    rows.forEach(function (r) {
+      var a = document.createElement("div"); a.textContent = r[0];
+      var b = document.createElement("div"); b.textContent = r[1];
+      g.appendChild(a); g.appendChild(b);
+    });
+    if (errs.length) showErr("statusErr", errs.join(" | "));
   }
 
-  $("apiSave").addEventListener("click", function () {
-    var v = $("apiInput").value.trim();
-    if (v && !/^https?:\/\//.test(v)) v = "https://" + v;
-    try { localStorage.setItem(STORE_KEY, v); } catch (e) {}
-    loadStatus();
-  });
   $("reload").addEventListener("click", loadRepos);
   $("filter").addEventListener("input", drawRepos);
   $("fleetGo").addEventListener("click", fleet);
   $("hecklesLoad").addEventListener("click", loadHeckles);
   $("pollNow").addEventListener("click", pollNow);
 
-  if (api()) loadRepos();
+  loadRepos();
 })();
 </script>
 </body>
