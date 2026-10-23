@@ -1,6 +1,6 @@
 {
-  "lastChecked": "2026-10-23T20:11:35.575Z",
-  "lastError": "2026-10-18-orange-testbed: shared server sent an empty roast | blue-agent: shared server sent an empty roast | field-twin: shared server sent an empty roast | control-troll: shared server sent an empty roast | itchy-troll: shared server sent an empty roast",
+  "lastChecked": "2026-10-23T23:09:50.410Z",
+  "lastError": "2026-10-23-orange-smash: shared server sent an empty roast | control-troll: shared server sent an empty roast | blue-agent: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast | 2026-10-18-orange-testbed: shared server sent an empty roast",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "2e3008c215530c36b4d54d590fda2de8f662c822",
@@ -19,16 +19,24 @@
     "ghost-kitchen-builder": "2637102a8532507469de3dee1b464a7849778508",
     "sudosilo": "4a48845d7046fcae057fc4ff7a8e5121a25f3288",
     "2026-10-23-orange-smash": "6fdb172a1a323a195b711625fa9c657519b433f9",
-    "song-offset-listener": "6b9b742f76b0ae7361b86f9c27f4d654b5384c05"
+    "song-offset-listener": "6b9b742f76b0ae7361b86f9c27f4d654b5384c05",
+    "mill-ionaire": "e1c767e3c3654dbe650939c6611d8d6d717de5a3"
   },
   "retry": [
-    "2026-10-18-orange-testbed",
-    "blue-agent",
-    "field-twin",
+    "2026-10-23-orange-smash",
     "control-troll",
-    "itchy-troll"
+    "blue-agent",
+    "song-offset-listener",
+    "2026-10-18-orange-testbed"
   ],
   "heckles": [
+    {
+      "repo": "mill-ionaire",
+      "sha": "e1c767e",
+      "text": "This README is a brick of text with the personality of a torque wrench manual and the formatting of a ransom note. Twenty-three lines, no headings, no screenshot, and every section is a fat paragraph you have to excavate with a pickaxe, so a new player hunting for \"how do I ship an order\" gets to read about leadscrews first. It tells people to unzip and open index.html, then three paragraphs later announces the whole game is mill-ionaire-v2.html, and unless the itch zip build quietly renames that file, somebody is going to stare at a folder and swear. It leans on colors as instructions, the blue i button, the blue note button, a blue corner on every tile, which is a hell of a thing to hand a player who can't tell your blues apart or is squinting at a phone. The paragraph titled \"What is real and what is rough\" spends nearly all its words bragging about what is real and barely admits anything is rough, so that heading is lying. You also copied the whole in-game how to play into a file that will rot the minute you change a button, and now you have two manuals that will disagree. The line about the market cooling off so early money is the easiest you will ever make is a cheerful way to announce your economy punishes anyone who shows up late, and it deserves more than a shrug. Fine, the bit about a headless browser test playing the whole game before the itch zip ships is legitimately good, and the part about stowing parts and the bin scrap confirmation is clear enough. Everything else is a wall.\n\nFix it: Make the README.md install line match",
+      "url": "https://github.com/sudosilo/mill-ionaire/commit/e1c767e3c3654dbe650939c6611d8d6d717de5a3#commitcomment-206407655",
+      "at": "2026-10-23T23:10:07.385Z"
+    },
     {
       "repo": "song-offset-listener",
       "sha": "6b9b742",
