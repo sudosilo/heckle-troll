@@ -1,18 +1,21 @@
 {
-  "lastChecked": "2026-10-23T06:30:34.793Z",
-  "lastError": "2026-10-18-orange-testbed: shared server sent an empty roast | mohavetech-website: shared server sent an empty roast | 2026-10-20-orange-dialbeat: shared server sent an empty roast",
+  "lastChecked": "2026-10-23T12:00:22.054Z",
+  "lastError": null,
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "2e3008c215530c36b4d54d590fda2de8f662c822",
-    "control-troll": "6c681c20661289fa2e586c234e65cf7cb239885b",
+    "control-troll": "64032273ab80599ba3fbea292cd2a25164a0be78",
     "testbed-notes": "54ed1f9f5a3c48530715563caef4d5605488cabf"
   },
-  "retry": [
-    "2026-10-18-orange-testbed",
-    "mohavetech-website",
-    "2026-10-20-orange-dialbeat"
-  ],
+  "retry": [],
   "heckles": [
+    {
+      "repo": "control-troll",
+      "sha": "6403227",
+      "text": "Your own note",
+      "url": "https://github.com/sudosilo/control-troll/commit/64032273ab80599ba3fbea292cd2a25164a0be78#commitcomment-206314408",
+      "at": "2026-10-23T12:00:43.822Z"
+    },
     {
       "repo": "testbed-notes",
       "sha": "54ed1f9",
