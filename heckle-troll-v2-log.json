@@ -1,6 +1,6 @@
 {
-  "lastChecked": "2026-10-23T16:58:09.184Z",
-  "lastError": "2026-10-18-orange-testbed: shared server sent an empty roast | itchy-troll: shared server sent an empty roast | control-troll: shared server sent an empty roast",
+  "lastChecked": "2026-10-23T20:11:35.575Z",
+  "lastError": "2026-10-18-orange-testbed: shared server sent an empty roast | blue-agent: shared server sent an empty roast | field-twin: shared server sent an empty roast | control-troll: shared server sent an empty roast | itchy-troll: shared server sent an empty roast",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "2e3008c215530c36b4d54d590fda2de8f662c822",
@@ -17,14 +17,32 @@
     "ebutuoy-frontend": "0d90839d0cea58af5dc0b0919177035c9a251f17",
     "tinewood-keys": "a87f51fb81770c9ee61c2b17554d8b331af612ac",
     "ghost-kitchen-builder": "2637102a8532507469de3dee1b464a7849778508",
-    "sudosilo": "4a48845d7046fcae057fc4ff7a8e5121a25f3288"
+    "sudosilo": "4a48845d7046fcae057fc4ff7a8e5121a25f3288",
+    "2026-10-23-orange-smash": "6fdb172a1a323a195b711625fa9c657519b433f9",
+    "song-offset-listener": "6b9b742f76b0ae7361b86f9c27f4d654b5384c05"
   },
   "retry": [
     "2026-10-18-orange-testbed",
-    "itchy-troll",
-    "control-troll"
+    "blue-agent",
+    "field-twin",
+    "control-troll",
+    "itchy-troll"
   ],
   "heckles": [
+    {
+      "repo": "song-offset-listener",
+      "sha": "6b9b742",
+      "text": "Well, look at this little route, a whole standalone endpoint in api/bpm-lookup.js whose entire error handling strategy is a shrug. That try/catch around findBpmAndKey swallows the exception, throws away the err it bothered to name, and sets found to null, so a dead upstream, a rate limit, a busted API key and a song that genuinely does not exist all come back as the same cheerful 200 with \"no bpm found\". Good luck debugging that at midnight. Then you slapped Access-Control-Allow-Origin star on a public endpoint that proxies a third party lookup, with no caching, no rate limiting and no length check on title or artist, so any rando can hammer it and burn your quota while you sleep. I can't see lib/getsongbpm.js, so I won't guess what's in there, but this front door is wide open. And cleanTitle is a meat grinder. That regex strips the words beat",
+      "url": "https://github.com/sudosilo/song-offset-listener/commit/6b9b742f76b0ae7361b86f9c27f4d654b5384c05#commitcomment-206386938",
+      "at": "2026-10-23T20:11:59.189Z"
+    },
+    {
+      "repo": "2026-10-23-orange-smash",
+      "sha": "6fdb172",
+      "text": "Well, shit, you handed me a push with a big announcement and nothing behind it. The first commit message swaggers in claiming \"Lyric smash: smash mode and live karaoke on the Offset Listener backend,\" which is two whole features, and the diff is empty. Not a line. I can't tell you the karaoke syncs, the smash mode works, or that either exists, because as far as this push shows, it's a press release for a product that wasn't shipped. Then the second commit, \"Trigger production build,\" is an empty shove at the deploy button, which is how you kick a vending machine and hope a sandwich falls out. If a build ran off this, it built whatever was already sitting there, and the commit message pretends otherwise. Also, two commits that carry the same pasted co-author and session link boilerplate while saying nothing about what changed is a lot of ceremony for a goddamn no-op. I'm not going to invent bugs in code I can't see, so the only thing I can heckle is the missing work and the lying-by-omission history.\n\nFix it: Check the branch 2026-10-23-orange-smash locally and confirm the smash mode and karaoke files were actually staged and committed. Push the real changes in a commit that touches the files, since right now the first commit message describes work the diff doesn't contain. Reword or drop the \"Trigger production build\" commit so the history doesn't claim a build that shipped nothing new. Trigger the production build from the CI or deploy settings instead of a junk commit, and only after the real code is in. Put a plain description in the commit message of what changed in the Offset Listener backend integration, so the next review has something to check against.",
+      "url": "https://github.com/sudosilo/2026-10-23-orange-smash/commit/6fdb172a1a323a195b711625fa9c657519b433f9#commitcomment-206386916",
+      "at": "2026-10-23T20:11:46.903Z"
+    },
     {
       "repo": "sudosilo",
       "sha": "4a48845",
