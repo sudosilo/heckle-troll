@@ -1,6 +1,6 @@
 {
-  "lastChecked": "2026-10-25T16:49:46.671Z",
-  "lastError": "mill-ionaire: shared server sent an empty roast | control-troll: shared server sent an empty roast | itchy-troll: shared server sent an empty roast | field-twin: shared server sent an empty roast | 2026-10-18-orange-testbed: shared server sent an empty roast | 2026-10-23-orange-smash: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast",
+  "lastChecked": "2026-10-25T19:19:17.552Z",
+  "lastError": "2026-10-23-orange-smash: shared server sent an empty roast | stackloom-meta: shared server sent an empty roast | control-troll: shared server sent an empty roast | mill-ionaire: shared server sent an empty roast | itchy-troll: shared server sent an empty roast | 2026-10-18-orange-testbed: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "2e3008c215530c36b4d54d590fda2de8f662c822",
@@ -46,18 +46,26 @@
     "spectral-engine": "0d4935e2e7d22371ae4749ef10492fa41e2bbf8a",
     "looper": "c43d3663abaf57bd93dfcff73978a083bf0bc84d",
     "axiom": "fb8339adea7f545fe48809a44af4af2812d4f933",
-    "free-as-in-links": "d8b78cdb0135e70c8ab77c2b7300fd4d8215159d"
+    "free-as-in-links": "d8b78cdb0135e70c8ab77c2b7300fd4d8215159d",
+    "blue-agent": "dace14ecfe571a3041dc35b02eb145de85af483b"
   },
   "retry": [
-    "mill-ionaire",
-    "control-troll",
-    "itchy-troll",
-    "field-twin",
-    "2026-10-18-orange-testbed",
     "2026-10-23-orange-smash",
+    "stackloom-meta",
+    "control-troll",
+    "mill-ionaire",
+    "itchy-troll",
+    "2026-10-18-orange-testbed",
     "song-offset-listener"
   ],
   "heckles": [
+    {
+      "repo": "blue-agent",
+      "sha": "dace14e",
+      "text": "Well, look at this: a file called show-runs.mjs, which is supposed to print crap into the Railway log, now also goes around deleting keys in Redis like a janitor with a grudge. A read only diagnostic that quietly became a write path is how you get surprised at 2am, and nobody reading that filename will expect it. The commit message brags about RUN_NOW and says fuck all about the fact that you also ripped out the EVENT lines that showed the last three events per run, so the one thing that told you why a run died is gone and the message pretends it never happened. Then there's the c.keys('dq:lastauto:*') call sitting inside the per slug loop, so every slug in your comma list triggers another full keyspace scan, and KEYS blocks Redis while it chews through everything. The guard key dq:runnow:<value> gets written before any deletion happens, so if a del blows up halfway the request is already marked done and your agent just sits there ignoring you. Those guard keys also never expire, so every value you ever try piles up forever. The \"any value change counts as a new request\" trick means rerunning violet requires typing something stupid like violet, with a trailing comma, and the comment cheerfully admits it. There's no log line when the guard says it already ran or when no keys matched, so a silent no-op looks identical to success. That one-line for loop with the if and the braces jammed together is also a pain to read. Fine, I'll give you this much: truncating r.error to 200 characters is",
+      "url": "https://github.com/sudosilo/blue-agent/commit/dace14ecfe571a3041dc35b02eb145de85af483b#commitcomment-206587639",
+      "at": "2026-10-25T19:19:46.337Z"
+    },
     {
       "repo": "sudosilo",
       "sha": "0b8d28c",
@@ -330,13 +338,6 @@
       "text": "Jesus, a push that's nothing but docs, and the commit message is \"docs: scribe update\", which tells me exactly dick about what changed. Update what, pal? The CHANGELOG.md is a single line long and it can't even agree with itself: the heading says v2026.10.11, then the same line says \"Created the app as version 1.0\". So which is it, calendar versioning or a 1.0 fairy tale? Pick one. Then the README.md goes and copies that exact sentence into a \"Latest change\" section, so now you've got the same line living in two places, waiting to drift apart the first time you touch either. The README also has a line announcing that the app is \"checked every morning by Control Troll\", which is nobody's business but ours and is just clutter for anyone trying to figure out what this thing is. The feature list is a long comma soup of raster, spiral, hatch, concentric, pocket, lissajous, star, cityscape, plus toggles for fill, flood, depth, and fade, and \"nudge the target\" with zero explanation of what the target is or how you nudge it. There are no controls listed, no keys, no screenshot, no run instructions, and the live link is a bare \"pixelmill.vercel.app\" with no https in front of it, so half the viewers won't get a clickable link. To be fair, the one-sentence pitch of a mill cutting pixel art is clear and kind of charming, and I'll shut up about that. I only got docs in this diff, so I can't say a damn thing about whether the sim code works.\n\nFix it: Rewrite the commit message to say what actually changed, like \"docs: add initial README and CHANGELOG\". Settle the version scheme in CHANGELOG.md and make the heading and the entry text use the same one. Delete the duplicated \"Latest change\" paragraph from README.md and leave it to CHANGELOG.md. Cut the Control Troll line from README.md. Add the controls to README.md, with the actual keys or buttons for pause, skip, nudge, fill, flood, depth, fade, pen size, and city views. Explain what \"the target\" is in README.md in one sentence. Make the live link in README.md a full https URL. Add a screenshot or GIF near the top of README.md so people can see the thing cutting before they read about it.",
       "url": "https://github.com/sudosilo/pixelmill/commit/0bcce8a667d3ca0022b71c51c97fc89819bf34d4#commitcomment-206358655",
       "at": "2026-10-23T17:00:31.850Z"
-    },
-    {
-      "repo": "coffee-autosim",
-      "sha": "1b44cee",
-      "text": "Well, this push is a README and a one-line changelog, so there's not much to hold the building up, but I'll find the cracks anyway. The commit message \"docs: scribe update\" tells me fuck all, because update of what? Two files, one of them brand new, and you call it an update. CHANGELOG.md claims to be \"the full history\" in the README, yet it's a single line, which is a history the way a coat hook is a closet. That line also says v2026.10.11 and then \"version 3\" in the same breath, so now there are two version schemes fighting in a parking lot and nobody knows which one is the real number. The README repeats that exact sentence under \"Latest change,\" so the moment you push anything new you've got two places to forget to edit, and one of them will lie. The line \"This app is checked every morning by Control Troll\" is shop gossip, not documentation, and a visitor doesn't give a shit. The README also has no setup, no run instructions, nothing on how to build it, and the title line \"Coffee Autosim\" is bare text with no markdown heading, so the file reads like a sticky note. The feature blurb is vague too: \"House brew is used and refilled\" and \"Tickets are placed in slots\" leave me guessing what the hell any of that means on screen. In fairness, the description of stations, stick figure baristas, and the half, one, two, and four times speed buttons is clear and gives me a picture, so that part gets a grudging nod.\n\nFix it: Write a real commit message for this push, something like \"docs: add README and initial CHANGELOG\", instead of \"scribe update\". Pick one version scheme and use it in CHANGELOG.md, so the date version and \"version 3\" stop competing. Delete the \"Latest change\" section in README.md and let the link to CHANGELOG.md do the work. Add a few lines to README.md on how to run or build the app locally. Put a proper heading on the first line of README.md so it renders like a README. C",
-      "url": "https://github.com/sudosilo/coffee-autosim/commit/1b44cee7059813acc9af6b5e8939e5ba10717f01#commitcomment-206358634",
-      "at": "2026-10-23T17:00:19.071Z"
     }
   ]
 }
