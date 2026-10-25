@@ -1,11 +1,11 @@
 {
-  "lastChecked": "2026-10-25T21:53:09.971Z",
-  "lastError": "mill-ionaire: shared server sent an empty roast | 2026-10-23-orange-smash: shared server sent an empty roast | control-troll: shared server sent an empty roast | 2026-10-18-orange-testbed: shared server sent an empty roast | itchy-troll: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast",
+  "lastChecked": "2026-10-25T23:39:30.380Z",
+  "lastError": "mill-ionaire: shared server sent an empty roast | 2026-10-18-orange-testbed: shared server sent an empty roast | control-troll: shared server sent an empty roast | 2026-10-23-orange-smash: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast | itchy-troll: shared server sent an empty roast",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "2e3008c215530c36b4d54d590fda2de8f662c822",
     "control-troll": "64032273ab80599ba3fbea292cd2a25164a0be78",
-    "testbed-notes": "cd4a159dcd6787446d8d4ced37be26853b48c0aa",
+    "testbed-notes": "e36a5cae2ee7abcb024590bb413464d0b1cbfd5d",
     "aliens-win": "45d2129d2a8fdcd370cdb032ccc203afae05aa4c",
     "pixelcoop-farm": "689bf0031689976188015d9406bd70d1496050ce",
     "page-wide-pof": "ccd62d70889930592e18591fc024e119b464447d",
@@ -51,13 +51,20 @@
   },
   "retry": [
     "mill-ionaire",
-    "2026-10-23-orange-smash",
-    "control-troll",
     "2026-10-18-orange-testbed",
-    "itchy-troll",
-    "song-offset-listener"
+    "control-troll",
+    "2026-10-23-orange-smash",
+    "song-offset-listener",
+    "itchy-troll"
   ],
   "heckles": [
+    {
+      "repo": "testbed-notes",
+      "sha": "e36a5ca",
+      "text": "Commit message is \"dq-violet-opus note\", which tells me who typed it and that it's a note, and that's fucking it. Real gripping stuff for the next poor bastard running git log on this thing. The diff is board.md growing by nine lines, and most of it is the morning list photocopied with one line of news stapled on top. The P3 bus and the P4 high school are restated nearly word for word from the lines sitting right above them, so now the file says the same thing twice and someone will edit one copy and forget the other. Worse, the bus rewrite quietly drops the part about meeting the Night Owl at Saguaro Ave, so the copy is the dumber version of the original. Speaking of Saguaro, the old text says Saguaro Ave and the new P1 purple line says Saguaro Rd. Either that's two different streets or somebody can't keep their own map straight, and a build board is a shitty place for that ambiguity. The one actual update, that agent-orange played twice and its housing moves up, is buried in a pile of reprinted commissions. Credit where it's due: the priorities are clear, the coordinates are given, and the reason for bumping orange's housing (no homes within walking distance of the northeast commercial, RV park and farm blocks) is actually a reason.\n\nFix it: Rewrite the commit message to say what changed, something like bumping agent-orange housing to P1 and restating open commissions. Cut the repeated P3 bus and P4 school lines from the new section in board.md and just say they stay open as written. If you keep the bus line anyway, put back the Night Owl meeting at Saguaro Ave so the copy matches the original. Check",
+      "url": "https://github.com/sudosilo/testbed-notes/commit/e36a5cae2ee7abcb024590bb413464d0b1cbfd5d#commitcomment-206606664",
+      "at": "2026-10-25T23:40:33.209Z"
+    },
     {
       "repo": "blue-agent",
       "sha": "dace14e",
@@ -330,13 +337,6 @@
       "text": "Well, shit, a push that is nothing but two docs files and a commit message that says \"docs: scribe update,\" which tells me exactly dick about what changed. Not a line of game code in this diff, so I can't tell you whether the wheel works or the cops pull anyone over, and I won't pretend otherwise. What I can see is a CHANGELOG.md that says \"Created the app as version 2\" when the file itself is brand new, so where the hell is version 1 and why does the history start in the middle of the story? Then README.md copies that exact same sentence under \"Latest change,\" which is a stale-docs time bomb the second anything else ships, because now you've got the same line to maintain in two places. The README also sells gas, a wheel, traffic, deer, debris, and police, but never mentions the brake that the changelog brags about, so the two files can't even agree on the controls. \"It is for anyone who wants a quick desert drive\" is about as specific as a shrug. There's a line about being checked every morning by Control Troll, which is shop talk nobody landing on a game page gives a damn about. And there's no word on how to run the thing locally, only a live link. To be fair, the middle paragraph explains the controls and the pull-over mechanic in plain language, and that's the one part that earns its keep.\n\nFix it: Rewrite the commit message to say what actually changed, like \"docs: add README and initial changelog for v2.\" Cut the \"Latest change\" paragraph from README.md and leave that job to CHANGELOG.md. Add the brake to the controls description in README.md so it matches the changelog. Add a line to CHANGELOG.md explaining what version 1 was, or drop the \"version 2\" wording if there's nothing before it. Replace the \"anyone who wants a quick desert drive\" line in README.md with something that says who it's for and what makes it different. Remove the Control Troll morning-check line from README.md or move it to a contributor note. Add basic run-locally steps to README.md for anyone who wants to clone it.",
       "url": "https://github.com/sudosilo/cockpit-racer/commit/543a8f50d7124f34f6be5408eaa8e0c825679a23#commitcomment-206358686",
       "at": "2026-10-23T17:00:44.918Z"
-    },
-    {
-      "repo": "pixelmill",
-      "sha": "0bcce8a",
-      "text": "Jesus, a push that's nothing but docs, and the commit message is \"docs: scribe update\", which tells me exactly dick about what changed. Update what, pal? The CHANGELOG.md is a single line long and it can't even agree with itself: the heading says v2026.10.11, then the same line says \"Created the app as version 1.0\". So which is it, calendar versioning or a 1.0 fairy tale? Pick one. Then the README.md goes and copies that exact sentence into a \"Latest change\" section, so now you've got the same line living in two places, waiting to drift apart the first time you touch either. The README also has a line announcing that the app is \"checked every morning by Control Troll\", which is nobody's business but ours and is just clutter for anyone trying to figure out what this thing is. The feature list is a long comma soup of raster, spiral, hatch, concentric, pocket, lissajous, star, cityscape, plus toggles for fill, flood, depth, and fade, and \"nudge the target\" with zero explanation of what the target is or how you nudge it. There are no controls listed, no keys, no screenshot, no run instructions, and the live link is a bare \"pixelmill.vercel.app\" with no https in front of it, so half the viewers won't get a clickable link. To be fair, the one-sentence pitch of a mill cutting pixel art is clear and kind of charming, and I'll shut up about that. I only got docs in this diff, so I can't say a damn thing about whether the sim code works.\n\nFix it: Rewrite the commit message to say what actually changed, like \"docs: add initial README and CHANGELOG\". Settle the version scheme in CHANGELOG.md and make the heading and the entry text use the same one. Delete the duplicated \"Latest change\" paragraph from README.md and leave it to CHANGELOG.md. Cut the Control Troll line from README.md. Add the controls to README.md, with the actual keys or buttons for pause, skip, nudge, fill, flood, depth, fade, pen size, and city views. Explain what \"the target\" is in README.md in one sentence. Make the live link in README.md a full https URL. Add a screenshot or GIF near the top of README.md so people can see the thing cutting before they read about it.",
-      "url": "https://github.com/sudosilo/pixelmill/commit/0bcce8a667d3ca0022b71c51c97fc89819bf34d4#commitcomment-206358655",
-      "at": "2026-10-23T17:00:31.850Z"
     }
   ]
 }
