@@ -1,11 +1,11 @@
 {
-  "lastChecked": "2026-10-25T02:01:06.638Z",
-  "lastError": "control-troll: shared server sent an empty roast | 2026-10-23-orange-smash: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast | 2026-10-18-orange-testbed: shared server sent an empty roast | itchy-troll: shared server sent an empty roast | mill-ionaire: shared server sent an empty roast",
+  "lastChecked": "2026-10-25T07:31:55.066Z",
+  "lastError": "control-troll: shared server sent an empty roast | sound-bender: shared server sent an empty roast | 2026-10-18-orange-testbed: shared server sent an empty roast | 2026-10-23-orange-smash: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast | itchy-troll: shared server sent an empty roast | mill-ionaire: shared server sent an empty roast",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "2e3008c215530c36b4d54d590fda2de8f662c822",
     "control-troll": "64032273ab80599ba3fbea292cd2a25164a0be78",
-    "testbed-notes": "180b0705e73955ba74b734b850cbed2c50b27b77",
+    "testbed-notes": "cd4a159dcd6787446d8d4ced37be26853b48c0aa",
     "aliens-win": "45d2129d2a8fdcd370cdb032ccc203afae05aa4c",
     "pixelcoop-farm": "689bf0031689976188015d9406bd70d1496050ce",
     "page-wide-pof": "ccd62d70889930592e18591fc024e119b464447d",
@@ -38,13 +38,21 @@
   },
   "retry": [
     "control-troll",
+    "sound-bender",
+    "2026-10-18-orange-testbed",
     "2026-10-23-orange-smash",
     "song-offset-listener",
-    "2026-10-18-orange-testbed",
     "itchy-troll",
     "mill-ionaire"
   ],
   "heckles": [
+    {
+      "repo": "testbed-notes",
+      "sha": "cd4a159",
+      "text": "Three commits named \"blue note\", \"purple note\" and \"dq-violet-opus note\", and every one of them touches the same goddamn board.md. That's not a commit history, that's a sticky note collection with the content stripped out. Nobody scrolling the log can tell a claim from a commission from a bus route. Then you open the file and it's a wall of text, every entry cramm",
+      "url": "https://github.com/sudosilo/testbed-notes/commit/cd4a159dcd6787446d8d4ced37be26853b48c0aa#commitcomment-206537539",
+      "at": "2026-10-25T07:32:20.655Z"
+    },
     {
       "repo": "testbed-notes",
       "sha": "180b070",
