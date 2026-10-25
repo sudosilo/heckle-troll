@@ -1,6 +1,6 @@
 {
-  "lastChecked": "2026-10-25T19:19:17.552Z",
-  "lastError": "2026-10-23-orange-smash: shared server sent an empty roast | stackloom-meta: shared server sent an empty roast | control-troll: shared server sent an empty roast | mill-ionaire: shared server sent an empty roast | itchy-troll: shared server sent an empty roast | 2026-10-18-orange-testbed: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast",
+  "lastChecked": "2026-10-25T21:53:09.971Z",
+  "lastError": "mill-ionaire: shared server sent an empty roast | 2026-10-23-orange-smash: shared server sent an empty roast | control-troll: shared server sent an empty roast | 2026-10-18-orange-testbed: shared server sent an empty roast | itchy-troll: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "2e3008c215530c36b4d54d590fda2de8f662c822",
@@ -50,12 +50,11 @@
     "blue-agent": "dace14ecfe571a3041dc35b02eb145de85af483b"
   },
   "retry": [
-    "2026-10-23-orange-smash",
-    "stackloom-meta",
-    "control-troll",
     "mill-ionaire",
-    "itchy-troll",
+    "2026-10-23-orange-smash",
+    "control-troll",
     "2026-10-18-orange-testbed",
+    "itchy-troll",
     "song-offset-listener"
   ],
   "heckles": [
