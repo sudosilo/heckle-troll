@@ -1,6 +1,6 @@
 {
-  "lastChecked": "2026-10-26T14:08:04.830Z",
-  "lastError": "2026-10-18-orange-testbed: shared server sent an empty roast | control-troll: shared server sent an empty roast | sudosilo: shared server sent an empty roast | 2026-10-23-orange-smash: shared server sent an empty roast | blue-agent: shared server sent an empty roast | mill-ionaire: shared server sent an empty roast | 2026-10-22-orange-agent: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast | itchy-troll: shared server sent an empty roast",
+  "lastChecked": "2026-10-26T19:52:42.366Z",
+  "lastError": "control-troll: shared server sent an empty roast | 2026-10-23-orange-smash: shared server sent an empty roast | 2026-10-18-orange-testbed: shared server sent an empty roast | itchy-troll: shared server sent an empty roast | blue-agent: shared server sent an empty roast | charley-douglass: shared server sent an empty roast | mill-ionaire: shared server sent an empty roast | 2026-10-22-orange-agent: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "2e3008c215530c36b4d54d590fda2de8f662c822",
@@ -17,7 +17,7 @@
     "ebutuoy-frontend": "0d90839d0cea58af5dc0b0919177035c9a251f17",
     "tinewood-keys": "a87f51fb81770c9ee61c2b17554d8b331af612ac",
     "ghost-kitchen-builder": "2637102a8532507469de3dee1b464a7849778508",
-    "sudosilo": "0b8d28c9d2dcf3b0e88e91bd7f77b89ebd3a220e",
+    "sudosilo": "63a6a975c68b2cef27c7c43491c3376b7fb1dad0",
     "2026-10-23-orange-smash": "6fdb172a1a323a195b711625fa9c657519b433f9",
     "song-offset-listener": "6b9b742f76b0ae7361b86f9c27f4d654b5384c05",
     "mill-ionaire": "e1c767e3c3654dbe650939c6611d8d6d717de5a3",
@@ -58,20 +58,35 @@
     "blue-agent-sandbox": "b1fc1061105232d95a04ec2d5755aa9c6a50e7ce",
     "topo-wars-server": "a6776d3dc86cfaeb7a585d6771e07a033431cddd",
     "fogwarren-vx": "073e1fc12afa79387827c22ff74667181eaa6dc6",
-    "rosetta-pone": "fef1518945440b36cb90885ac4eccdd239dd38cc"
+    "rosetta-pone": "fef1518945440b36cb90885ac4eccdd239dd38cc",
+    "steward-repo": "ef50a2b6d96310243cf870f6b4f9b10a403a8095"
   },
   "retry": [
-    "2026-10-18-orange-testbed",
     "control-troll",
-    "sudosilo",
     "2026-10-23-orange-smash",
+    "2026-10-18-orange-testbed",
+    "itchy-troll",
     "blue-agent",
+    "charley-douglass",
     "mill-ionaire",
     "2026-10-22-orange-agent",
-    "song-offset-listener",
-    "itchy-troll"
+    "song-offset-listener"
   ],
   "heckles": [
+    {
+      "repo": "sudosilo",
+      "sha": "63a6a97",
+      "text": "Another scribe push, another wall of text with a commit message that says \"docs: scribe update\" like that tells anybody a goddamn thing. Eleven repos got added and the message doesn't even have the decency to say so. At least the",
+      "url": "https://github.com/sudosilo/sudosilo/commit/63a6a975c68b2cef27c7c43491c3376b7fb1dad0#commitcomment-206751950",
+      "at": "2026-10-26T19:54:21.497Z"
+    },
+    {
+      "repo": "steward-repo",
+      "sha": "ef50a2b",
+      "text": "Well, this is a two line push and it still manages to leave me squinting. You slapped an if on the \"play one turn\" step in play.yml, so when DETAILER_ON_BLUE is flipped the detailer matrix leg still spins up a whole runner, checks out, installs Node 22, and then stands there like a guy who showed up to a shift that got cancelled. That is a lot of wasted minutes for a bypass. The check is also a strict string compare against '1', so the first time someone sets that variable to true or yes, the detailer happily plays anyway and you will spend an hour wondering why the hell two agents are fighting over the same turn. The comment swears the detailer moved to a blue-agent runner, but nothing in this diff shows that runner exists, so I am taking your word on a handoff I cannot see. And if any steps sit after this one in the job, I can't tell whether they also get skipped, so the detailer leg might still run cleanup or push steps with nothing to push. The commit message is one vague line that says nothing about where the switch lives or what turns it on. On the plus side, the condition logic itself is correct and the steward leg is untouched, so you did not break the thing you were not supposed to touch. Congratulations on the bare minimum.\n\nFix it: Move the skip so the detailer leg never starts, either by building the matrix from the variable or by putting the same condition on every step after checkout in play.yml. Apply the same if to any steps that follow \"play one turn\" so they do not run on an empty leg. Compare DETAILER_ON_BLUE against a normalized value like lower-casing it, or accept both '1' and 'true', in the",
+      "url": "https://github.com/sudosilo/steward-repo/commit/ef50a2b6d96310243cf870f6b4f9b10a403a8095#commitcomment-206751885",
+      "at": "2026-10-26T19:53:56.717Z"
+    },
     {
       "repo": "rosetta-pone",
       "sha": "fef1518",
@@ -337,20 +352,6 @@
       "text": "Well, look at this, a push that touches zero code and still manages to be sloppy. The commit message \"docs: scribe update\" tells me nothing, because what the hell is a scribe and what did it update, when both files are brand new and this is really \"added a README and a changelog.\" The versioning is a mess too: CHANGELOG.md uses date stamps like v2026.10.12 but the entries call them \"version three\" and \"version two,\" so which naming scheme are we running, because it ain't both. There's no entry for version one either, so the history starts on page two. The README then copies the whole latest changelog entry word for word under \"Latest change,\" which means the next release gets documented twice and one copy will rot the second somebody forgets. The README also says Pajamastan is the \"official site of a micronation\" and then never says what a citizen or visitor actually does there, and \"creator seal\" gets name-dropped like we're all supposed to know what the hell that is. The live URL is a bare string, no https, no link. The line about Control Troll checking every morning is a nice flex, but it points nowhere and gives no way to see a result. There's also nothing about how to run the damn thing locally, and no license. Grudgingly, I'll admit that having a changelog at all beats most repos I see, and the entries are at least short and readable.\n\nFix it: Rewrite the commit message to say what changed, something like \"docs: add README and CHANGELOG.\" Pick one version scheme in CHANGELOG.md and use it in every entry, either dates or counted versions. Add a version one entry to CHANGELOG.md, or state that history starts at version two. Delete the \"Latest change\" paragraph in README.md and just point to CHANGELOG.md. Add a plain sentence to README.md saying what a visitor can do on the site and what the creator seal is. Turn the pajamastan.vercel.app line in README.md into a full https link. Add a few lines to README.md on running the project locally. Link or explain Control Troll in README.md, or cut the line. Add a license file or a license line to README.md.",
       "url": "https://github.com/sudosilo/pajamastan/commit/9aada0df15dd7015cca9439bb5205ccbff2f14b8#commitcomment-206471080",
       "at": "2026-10-24T14:40:18.437Z"
-    },
-    {
-      "repo": "tractor-tool",
-      "sha": "cc37b67",
-      "text": "Well, this push is all paperwork and no tractor. The commit message \"docs: scribe update\" tells me nothing, and it's also wrong, because this isn't an update, it's two brand new files, so the message is both vague and lying. CHANGELOG.md proudly announces \"First release\" and \"revision B\" in the same breath, which is like calling a kid your firstborn and your second son at once. Then it brags about \"generic app content,\" which is a hell of a thing to put in writing about your own product, and it tacks on \"Triggered a production build,\" which is a deploy log note and not a change anyone using the thing gives a damn about. The README copies that exact changelog line into a \"Latest change\" section, so now you've got the same sentence living in two places, waiting to go stale the minute you ship again. It also pitches a driving game inside a business planning kit for people starting a tractor outfit, which is a strange pairing, but I can't see the code, so I'll only say the README makes it sound bolted on. The \"Checked every morning by Control Troll\" line is just a brag with no use to a reader. There's nothing here on how to run it, no license, and no hint of what \"creator seal\" means. Credit where it's due: the README does at least say what each of the four tabs does in plain words, which beats most repos I've seen.\n\nFix it: Rewrite the commit message to say what actually happened, like \"docs: add README and CHANGELOG\". Drop the \"revision B\" and \"creator seal\" mush from CHANGELOG.md and describe the real contents of the release in plain terms. Delete \"Triggered a production build\" from CHANGELOG.md because it's deploy noise. Replace the \"Latest change\" section in README.md with a single link to CHANGELOG.md so the same text stops living in two places. Remove or explain the \"generic app content\" phrase in CHANGELOG.md so it doesn't read like an apology. Add run and install instructions to README.md. Add a license line to README.md. Cut or shrink the Control Troll sentence in README.md unless it tells the reader something they can use.",
-      "url": "https://github.com/sudosilo/tractor-tool/commit/cc37b6734592a3fa6528b778fe8b0cbdfc1e9a2b#commitcomment-206471070",
-      "at": "2026-10-24T14:40:06.487Z"
-    },
-    {
-      "repo": "anthropic-percentage-pop-up-game",
-      "sha": "de6f053",
-      "text": "Christ on a cracker, \"docs: scribe update\" is the commit message for a push that adds two whole files and announces a first release. That's a label on a box with no label. Then you open README.md and it's the CHANGELOG.md entry pasted in word for word under \"Latest change\", so the same sentence now lives in two places and will drift the first time you touch either one. The product itself sounds like a hostile work environment: a typing game where pop-ups start the second the page opens, never stop, and keep firing over the results screen, so the player can't even read their score in peace. Banners land right on the typing spot, which is the one place a typing game needs to stay clear, and you're proudly documenting that like it's a feature. The dark theme is front and center in both files, so I'm already picturing the low contrast under all that interruption. Dictated input being ignored is at least honest, I'll give you that, though it reads like a bug you decided to call a rule. Live local weather is promised with zero word on what happens when the location lookup fails or gets denied, and I can't see the code here, so I'm only saying the docs are silent on it. 222 percentage facts is a very specific number and not one word about where they came from.\n\nFix it: Rewrite the commit message to say what actually shipped, like \"docs: add README and CHANGELOG for v2026.10.13\". Cut the pasted \"Latest change\" paragraph from README.md and just point to CHANGELOG.md. Make the pop-ups stop on the results screen and say so in README.md and CHANGELOG.md. Move the banners off the typing spot and update the \"Banners appear over the typing spot\" line in README.md to match. Add a line in README.md about what the weather pop-up does when location is denied or unavailable. Offer a light theme, or at least mention contrast, where README.md brags about the dark theme. Note in README.md where the 222 percentage facts come from.",
-      "url": "https://github.com/sudosilo/anthropic-percentage-pop-up-game/commit/de6f0530cb0ba3f792602bb21b2e72c1b9e18b6e#commitcomment-206471052",
-      "at": "2026-10-24T14:39:55.241Z"
     }
   ]
 }
