@@ -1,6 +1,6 @@
 {
-  "lastChecked": "2026-10-26T19:52:42.366Z",
-  "lastError": "control-troll: shared server sent an empty roast | 2026-10-23-orange-smash: shared server sent an empty roast | 2026-10-18-orange-testbed: shared server sent an empty roast | itchy-troll: shared server sent an empty roast | blue-agent: shared server sent an empty roast | charley-douglass: shared server sent an empty roast | mill-ionaire: shared server sent an empty roast | 2026-10-22-orange-agent: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast",
+  "lastChecked": "2026-10-26T23:25:21.036Z",
+  "lastError": "blue-agent: shared server sent an empty roast | 2026-10-18-orange-testbed: shared server sent an empty roast | control-troll: shared server sent an empty roast | 2026-10-23-orange-smash: shared server sent an empty roast | itchy-troll: shared server sent an empty roast | mill-ionaire: shared server sent an empty roast | 2026-10-22-orange-agent: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "2e3008c215530c36b4d54d590fda2de8f662c822",
@@ -62,12 +62,11 @@
     "steward-repo": "ef50a2b6d96310243cf870f6b4f9b10a403a8095"
   },
   "retry": [
+    "blue-agent",
+    "2026-10-18-orange-testbed",
     "control-troll",
     "2026-10-23-orange-smash",
-    "2026-10-18-orange-testbed",
     "itchy-troll",
-    "blue-agent",
-    "charley-douglass",
     "mill-ionaire",
     "2026-10-22-orange-agent",
     "song-offset-listener"
