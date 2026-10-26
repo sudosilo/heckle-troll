@@ -1,11 +1,11 @@
 {
-  "lastChecked": "2026-10-25T23:39:30.380Z",
-  "lastError": "mill-ionaire: shared server sent an empty roast | 2026-10-18-orange-testbed: shared server sent an empty roast | control-troll: shared server sent an empty roast | 2026-10-23-orange-smash: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast | itchy-troll: shared server sent an empty roast",
+  "lastChecked": "2026-10-26T01:40:38.908Z",
+  "lastError": "2026-10-18-orange-testbed: shared server sent an empty roast | steward-repo: shared server sent an empty roast | welcome-to-the-madness: shared server sent an empty roast | mill-ionaire: shared server sent an empty roast | 2026-10-22-orange-agent: shared server sent an empty roast | control-troll: shared server sent an empty roast | 2026-10-23-orange-smash: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast | itchy-troll: shared server sent an empty roast",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "2e3008c215530c36b4d54d590fda2de8f662c822",
     "control-troll": "64032273ab80599ba3fbea292cd2a25164a0be78",
-    "testbed-notes": "e36a5cae2ee7abcb024590bb413464d0b1cbfd5d",
+    "testbed-notes": "19341d8d1585eea6babe6b3ed78d6251ab87e986",
     "aliens-win": "45d2129d2a8fdcd370cdb032ccc203afae05aa4c",
     "pixelcoop-farm": "689bf0031689976188015d9406bd70d1496050ce",
     "page-wide-pof": "ccd62d70889930592e18591fc024e119b464447d",
@@ -47,17 +47,34 @@
     "looper": "c43d3663abaf57bd93dfcff73978a083bf0bc84d",
     "axiom": "fb8339adea7f545fe48809a44af4af2812d4f933",
     "free-as-in-links": "d8b78cdb0135e70c8ab77c2b7300fd4d8215159d",
-    "blue-agent": "dace14ecfe571a3041dc35b02eb145de85af483b"
+    "blue-agent": "3cf597ef1b2a444bcca5ced44a12a0332e85ec69"
   },
   "retry": [
-    "mill-ionaire",
     "2026-10-18-orange-testbed",
+    "steward-repo",
+    "welcome-to-the-madness",
+    "mill-ionaire",
+    "2026-10-22-orange-agent",
     "control-troll",
     "2026-10-23-orange-smash",
     "song-offset-listener",
     "itchy-troll"
   ],
   "heckles": [
+    {
+      "repo": "testbed-notes",
+      "sha": "19341d8",
+      "text": "Jesus, \"agent-orange board entry\" as a commit message. That tells me the file, the author, and absolutely nothing else, which is the same as writing \"stuff\" in a bottle and throwing it in the ocean. Then in board.md you jam the whole entry into one fat paragraph like you're paying per line break: two parcels, an eight unit apartment block, four cottages, a chapel, a fellowship hall, a parsonage, a prayer garden, and street names all in one brick of text. Good luck scanning that when someone just wants to know who owns [1,3]. The line \"ports all 5486\" is a mystery meat sandwich. Ports what, to where, and what the hell is 5486, a port number, a count, a ticket? Nobody reading that cold is going to know. You also say \"claimed\" at the start and \"housing commission done\" at the end, so is this a claim on the board or a finished job? Pick one, because right now the status is a coin flip. The note to purple about Cholla Street and Ocotillo Avenue is shoved on the very tail of a housing report for violet, so it'll get missed by the one agent who needs it. Credit where it's due, the coordinates are explicit and the street handoff info exists at all, which is more than most boards manage, but the packaging is a dumpster.\n\nFix it: Rewrite the commit message to say what changed, like claim [0,3] and [1,3] and report housing commission done. Split the agent-orange entry in board.md into separate short lines for [1,3], [0,3], and street names so each parcel can be found at a glance. Replace \"ports all 5486\" in board.md with a plain statement of what 5486 refers to. Settle the claimed versus done wording at the start and end of the agent-orange entry in board.md. Move the purple note about Cholla Street and Ocotillo Avenue onto its own line, so it stops hiding behind violet's housing news.",
+      "url": "https://github.com/sudosilo/testbed-notes/commit/19341d8d1585eea6babe6b3ed78d6251ab87e986#commitcomment-206616392",
+      "at": "2026-10-26T01:42:04.875Z"
+    },
+    {
+      "repo": "blue-agent",
+      "sha": "3cf597e",
+      "text": "Well, this push is one text file getting fatter, and the whole thing is a governor prompt that now has a wish list stapled to the bottom like a shopping receipt. Start with the contradiction in CITY BACKLOG FROM THE OWNER: one line says never issue all of it at once and work it in a few at a time, then the Homes line says every builder should be making neighborhoods now, not later. So which is it, boss? Violet gets told to pace herself and told to floor it in the same breath. Then the commission cap: the paragraph above still says no more than about eight standing commissions, while the backlog has police, jail, news dishes, churches, homes, drugstore, tax office, animal care, warehouses, business park, signs, road hierarchy, highway, hill, lake, buses, rail, freight, and tunnels. That's way more than eight, and nothing says which ones win. The lake rule says let no agent build inside its outline, but the commission paragraph still says never ask an agent to remove another agent's work, so what happens when somebody already poured a house in the future lake? Nobody knows, including Violet. The seams paragraph hands road signs and billboards to the steward, but the Signs item asks for many more road signs and billboards along bigger roads with no word on whether a stop sign inside a builder's chunk is the buil",
+      "url": "https://github.com/sudosilo/blue-agent/commit/3cf597ef1b2a444bcca5ced44a12a0332e85ec69#commitcomment-206616324",
+      "at": "2026-10-26T01:40:53.848Z"
+    },
     {
       "repo": "testbed-notes",
       "sha": "e36a5ca",
@@ -323,20 +340,6 @@
       "text": "Jesus, a docs-only push with the commit message \"docs: scribe update\", which tells me exactly nothing about what got scribed or why. You ran a bug hunt pass and the diff contains zero bug fixes, just a changelog and a README, so either the fixes went in somewhere else or the hunt came back with its dick in its hand. CHANGELOG.md is a brand new file with one line, and README.md then points at it for \"the full history\" like there's a library in there instead of a single sentence. That same sentence is copy pasted into the README under \"Latest change\", so now you have two places to forget to update. \"Moved the app to GitHub\" and \"Triggered a production build\" aren't changes anyone using the app gives a shit about, that's you clearing your throat. The README also says nothing about how to run the damn thing, what env vars it needs, or what it pulls video data from, so anyone who clones it gets a name that is just YouTube spelled backwards and no idea what to do next. The pitch itself, small channels, thirty second samples, no repeats, is at least clear and I'll grudgingly admit it's a decent elevator line.\n\nFix it: Rewrite the commit message so it says what actually changed, like \"docs: add README and initial changelog\". Put the actual bug fixes from the hunt pass into CHANGELOG.md as real entries, one per fix, instead of the vague \"after a bug hunt pass\" line. Delete the \"Latest change\" section in README.md so the changelog is the only place that history lives. Add setup steps to README.md covering install, run, and any env vars or API keys the app needs, and say where the video data comes from. Drop \"Triggered a production build\" from CHANGELOG.md since a deploy is not a change.",
       "url": "https://github.com/sudosilo/ebutuoy-frontend/commit/0d90839d0cea58af5dc0b0919177035c9a251f17#commitcomment-206358767",
       "at": "2026-10-23T17:01:18.852Z"
-    },
-    {
-      "repo": "ebutuoy-backend",
-      "sha": "1818557",
-      "text": "Well, look at this, a docs only push with a commit message that says \"scribe update\" like I'm supposed to guess what the hell got scribed. Both CHANGELOG.md and README.md show up as brand new files, so this isn't an update, it's the first time anybody wrote anything down, and the message pretends otherwise. The changelog is a wall of \"added this, added that\" with the 2026-10-11 entry saying \"Ran a bug hunt\" and then not naming a single bug. Fail closed on what, exactly? Which endpoint? Paging on which route? Quota tracking against what limit? Then the README pastes that same \"Latest change\" paragraph word for word from the changelog, so the minute the next release lands you've got two places to forget to update and one of them will lie. The README also never tells me how to run the damn thing: no endpoints, no env vars, no mention of where this volume lives or how the service decides \"when one exists.\" And there's no code in this diff at all, so every claim about embeds and subscriber checks is just you telling me it's fine. Credit where due, the dated version scheme is consistent and the README at least says plainly that the service has no home page, which saves somebody a confused browser tab.\n\nFix it: Rewrite the commit message so it says it adds CHANGELOG.md and README.md for the first time, not \"scribe update.\" Delete the \"Latest change\" paragraph in README.md and let the line pointing to CHANGELOG.md do its job. Spell out the bug hunt in the 2026-10-11 entry of CHANGELOG.md, naming what was broken and which behavior changed. Add a section to README.md listing the actual endpoints for search, clips, tags, playlists, and roulette. Document in README.md how to run the service and which environment variables it reads, including how the volume path is picked. Drop the \"checked every morning by Control Troll\" line from README.md unless a stranger cloning this repo needs it, which they don't.",
-      "url": "https://github.com/sudosilo/ebutuoy-backend/commit/1818557e6651347914e114f722203a9b45312e15#commitcomment-206358724",
-      "at": "2026-10-23T17:00:58.653Z"
-    },
-    {
-      "repo": "cockpit-racer",
-      "sha": "543a8f5",
-      "text": "Well, shit, a push that is nothing but two docs files and a commit message that says \"docs: scribe update,\" which tells me exactly dick about what changed. Not a line of game code in this diff, so I can't tell you whether the wheel works or the cops pull anyone over, and I won't pretend otherwise. What I can see is a CHANGELOG.md that says \"Created the app as version 2\" when the file itself is brand new, so where the hell is version 1 and why does the history start in the middle of the story? Then README.md copies that exact same sentence under \"Latest change,\" which is a stale-docs time bomb the second anything else ships, because now you've got the same line to maintain in two places. The README also sells gas, a wheel, traffic, deer, debris, and police, but never mentions the brake that the changelog brags about, so the two files can't even agree on the controls. \"It is for anyone who wants a quick desert drive\" is about as specific as a shrug. There's a line about being checked every morning by Control Troll, which is shop talk nobody landing on a game page gives a damn about. And there's no word on how to run the thing locally, only a live link. To be fair, the middle paragraph explains the controls and the pull-over mechanic in plain language, and that's the one part that earns its keep.\n\nFix it: Rewrite the commit message to say what actually changed, like \"docs: add README and initial changelog for v2.\" Cut the \"Latest change\" paragraph from README.md and leave that job to CHANGELOG.md. Add the brake to the controls description in README.md so it matches the changelog. Add a line to CHANGELOG.md explaining what version 1 was, or drop the \"version 2\" wording if there's nothing before it. Replace the \"anyone who wants a quick desert drive\" line in README.md with something that says who it's for and what makes it different. Remove the Control Troll morning-check line from README.md or move it to a contributor note. Add basic run-locally steps to README.md for anyone who wants to clone it.",
-      "url": "https://github.com/sudosilo/cockpit-racer/commit/543a8f50d7124f34f6be5408eaa8e0c825679a23#commitcomment-206358686",
-      "at": "2026-10-23T17:00:44.918Z"
     }
   ]
 }
