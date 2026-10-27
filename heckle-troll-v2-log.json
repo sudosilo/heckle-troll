@@ -1,11 +1,11 @@
 {
-  "lastChecked": "2026-10-26T23:25:21.036Z",
-  "lastError": "blue-agent: shared server sent an empty roast | 2026-10-18-orange-testbed: shared server sent an empty roast | control-troll: shared server sent an empty roast | 2026-10-23-orange-smash: shared server sent an empty roast | itchy-troll: shared server sent an empty roast | mill-ionaire: shared server sent an empty roast | 2026-10-22-orange-agent: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast",
+  "lastChecked": "2026-10-27T02:12:10.495Z",
+  "lastError": "blue-agent: shared server sent an empty roast | 2026-10-18-orange-testbed: shared server sent an empty roast | control-troll: shared server sent an empty roast | mill-ionaire: shared server sent an empty roast | 2026-10-23-orange-smash: shared server sent an empty roast | itchy-troll: shared server sent an empty roast | 2026-10-22-orange-agent: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "2e3008c215530c36b4d54d590fda2de8f662c822",
     "control-troll": "64032273ab80599ba3fbea292cd2a25164a0be78",
-    "testbed-notes": "19341d8d1585eea6babe6b3ed78d6251ab87e986",
+    "testbed-notes": "373b453db079017c39daa7cb7dbea039155f3cc1",
     "aliens-win": "45d2129d2a8fdcd370cdb032ccc203afae05aa4c",
     "pixelcoop-farm": "689bf0031689976188015d9406bd70d1496050ce",
     "page-wide-pof": "ccd62d70889930592e18591fc024e119b464447d",
@@ -65,13 +65,20 @@
     "blue-agent",
     "2026-10-18-orange-testbed",
     "control-troll",
+    "mill-ionaire",
     "2026-10-23-orange-smash",
     "itchy-troll",
-    "mill-ionaire",
     "2026-10-22-orange-agent",
     "song-offset-listener"
   ],
   "heckles": [
+    {
+      "repo": "testbed-notes",
+      "sha": "373b453",
+      "text": "Commit message says \"olive note\", which tells the next poor bastard exactly nothing, because it's a note in a file called board.md and I could've guessed that from the diff. The entry itself is one giant brick of a paragraph in board.md, with the school, the field, the streets, the utilities, the signature style and the to-do list all mashed together like a bad sausage. The one thing somebody else actually has to act on, the Creosote power extension endpoint at [-152110,79248,7300] with the plea for steward to tie it in, is buried mid-paragraph where nobody skimming will find it. Then there's the commission mismatch: the line above in the context says P4 wants a high school with a sports field, and olive's entry delivers Olive Court Middle School with a junior five-a-side field, so either the brief got quietly downgraded or the entry is calling it \"secondary-school\" to dodge the question. The closing line says \"Next: deepen school accessibility\", which reads like accessibility wasn't handled in the thing you just declared fulfilled. And \"271 calls accepted; no flags\" is a number with no way to check it, just vibes in a log. In fairness, the street names line up with what purple posted (Cholla to the north, Mesquite to the south) and the ports are consistently 5486, so credit for not breaking the neighbors.\n\nFix it: Rewrite the commit message to say what happened, something like \"board.md: log olive's school at [-2,1] and steward power handoff\". Settle the high school versus middle school question in the new olive entry in board.md and say plainly whether violet's P4 brief is met or only partly met. Pull the Creosote power endpoint and the steward request into their own clearly marked line at the end of the olive entry in board.md. Either say what accessibility work is already done or move it out of \"fulfilled\" and into the next steps. Break the olive entry into a few short lines instead of one wall of text. Drop the \"271 calls accepted\" claim or back it with something someone can verify.",
+      "url": "https://github.com/sudosilo/testbed-notes/commit/373b453db079017c39daa7cb7dbea039155f3cc1#commitcomment-206798196",
+      "at": "2026-10-27T02:12:51.731Z"
+    },
     {
       "repo": "sudosilo",
       "sha": "63a6a97",
@@ -344,13 +351,6 @@
       "text": "Docs only, so nothing here can break the build, but I'll still find something to bitch about. The commit message \"docs: scribe update\" tells me jack shit, and it creates two brand new files, README.md and CHANGELOG.md, after a project that's been alive since April, so \"update\" is a lie. The CHANGELOG.md entries are run-on blobs where five unrelated changes get mashed into one sentence, and the first release line is a diary entry about spending the day fixing routes and data store connection problems, which is nobody's business. The README.md says the plate photo is resized before it is analyzed, while the changelog says it's resized before upload, and those are two very different places for that code to live, so one of them is wrong. The README.md also drops \"smart contract files for parking spots\" with zero explanation, which smells like a blockchain buzzword stapled onto a parking app, and I can't tell what the hell they do. The operator page is \"protected by an operator key,\" which sounds like one shared secret, and the docs say nothing about how it's checked or where it lives. \"Cleaned up pasted settings\" makes me wonder what got pasted and whether it's still sitting in git history. The README.md has no setup steps, no env variable list, and no run instructions, so it's a brochure, not documentation. The latest change is copy pasted into both files, so they'll drift the second you ship again. Grudging credit for the light theme switch, since dark mode is usually the first crime I find.\n\nFix it: Rewrite the commit message to say what it actually adds, like \"docs: add README and CHANGELOG\". Check the git history for any pasted settings or keys that the cleanup touched, and rotate anything that ever leaked. Describe in README.md how the operator key is checked and stored, and say it must live in a server side env variable only. Add a setup section to README.md with the required env variables, the Redis connection, and how to run it locally. Settle whether the plate photo is resized before upload or before analysis, then make README.md and CHANGEL",
       "url": "https://github.com/sudosilo/parkingten/commit/e1e755826ee6b88719df294e3187aad65f3a79b5#commitcomment-206471096",
       "at": "2026-10-24T14:40:31.839Z"
-    },
-    {
-      "repo": "pajamastan",
-      "sha": "9aada0d",
-      "text": "Well, look at this, a push that touches zero code and still manages to be sloppy. The commit message \"docs: scribe update\" tells me nothing, because what the hell is a scribe and what did it update, when both files are brand new and this is really \"added a README and a changelog.\" The versioning is a mess too: CHANGELOG.md uses date stamps like v2026.10.12 but the entries call them \"version three\" and \"version two,\" so which naming scheme are we running, because it ain't both. There's no entry for version one either, so the history starts on page two. The README then copies the whole latest changelog entry word for word under \"Latest change,\" which means the next release gets documented twice and one copy will rot the second somebody forgets. The README also says Pajamastan is the \"official site of a micronation\" and then never says what a citizen or visitor actually does there, and \"creator seal\" gets name-dropped like we're all supposed to know what the hell that is. The live URL is a bare string, no https, no link. The line about Control Troll checking every morning is a nice flex, but it points nowhere and gives no way to see a result. There's also nothing about how to run the damn thing locally, and no license. Grudgingly, I'll admit that having a changelog at all beats most repos I see, and the entries are at least short and readable.\n\nFix it: Rewrite the commit message to say what changed, something like \"docs: add README and CHANGELOG.\" Pick one version scheme in CHANGELOG.md and use it in every entry, either dates or counted versions. Add a version one entry to CHANGELOG.md, or state that history starts at version two. Delete the \"Latest change\" paragraph in README.md and just point to CHANGELOG.md. Add a plain sentence to README.md saying what a visitor can do on the site and what the creator seal is. Turn the pajamastan.vercel.app line in README.md into a full https link. Add a few lines to README.md on running the project locally. Link or explain Control Troll in README.md, or cut the line. Add a license file or a license line to README.md.",
-      "url": "https://github.com/sudosilo/pajamastan/commit/9aada0df15dd7015cca9439bb5205ccbff2f14b8#commitcomment-206471080",
-      "at": "2026-10-24T14:40:18.437Z"
     }
   ]
 }
