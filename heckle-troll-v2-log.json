@@ -1,6 +1,6 @@
 {
-  "lastChecked": "2026-10-27T13:42:12.761Z",
-  "lastError": "blue-agent: shared server sent an empty roast | control-troll: shared server sent an empty roast | itchy-troll: shared server sent an empty roast | 2026-10-22-orange-agent: shared server sent an empty roast | song-offset-listener: shared server sent an empty roast | 2026-10-18-orange-testbed: shared server sent an empty roast | mill-ionaire: shared server sent an empty roast | 2026-10-23-orange-smash: shared server sent an empty roast",
+  "lastChecked": "2026-10-27T18:59:47.287Z",
+  "lastError": "blue-agent: Shared server said 502: ai failed | control-troll: Shared server said 502: ai failed | smash-bender: Shared server said 502: ai failed | 2026-10-18-orange-testbed: Shared server said 502: ai failed | itchy-troll: Shared server said 502: ai failed | 2026-10-22-orange-agent: Shared server said 502: ai failed | song-offset-listener: Shared server said 502: ai failed | mill-ionaire: Shared server said 502: ai failed | 2026-10-23-orange-smash: Shared server said 502: ai failed",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "aeba4fee344050c9d80859602a10cd230aa848a0",
@@ -70,10 +70,11 @@
   "retry": [
     "blue-agent",
     "control-troll",
+    "smash-bender",
+    "2026-10-18-orange-testbed",
     "itchy-troll",
     "2026-10-22-orange-agent",
     "song-offset-listener",
-    "2026-10-18-orange-testbed",
     "mill-ionaire",
     "2026-10-23-orange-smash"
   ],
