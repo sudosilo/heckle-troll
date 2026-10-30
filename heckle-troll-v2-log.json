@@ -1,6 +1,6 @@
 {
-  "lastChecked": "2026-10-30T06:00:02.044Z",
-  "lastError": "blue-agent: Shared server said 502: ai failed | smash-bender: Shared server said 502: ai failed | mohavetech-website: Shared server said 502: ai failed | pdf-yourself: Shared server said 502: ai failed | 2026-10-23-orange-smash: Shared server said 502: ai failed | control-troll: Shared server said 502: ai failed | steward-repo: Shared server said 502: ai failed | field-twin: Shared server said 502: ai failed | itchy-troll: Shared server said 502: ai failed | song-offset-listener: Shared server said 502: ai failed | 2026-10-18-orange-testbed: Shared server said 502: ai failed | 2026-10-22-orang",
+  "lastChecked": "2026-10-30T12:18:46.897Z",
+  "lastError": "blue-agent: Shared server said 502: ai failed | control-troll: Shared server said 502: ai failed | smash-bender: Shared server said 502: ai failed | mohavetech-website: Shared server said 502: ai failed | 2026-10-23-orange-smash: Shared server said 502: ai failed | steward-repo: Shared server said 502: ai failed | field-twin: Shared server said 502: ai failed | itchy-troll: Shared server said 502: ai failed | song-offset-listener: Shared server said 502: ai failed | 2026-10-18-orange-testbed: Shared server said 502: ai failed | 2026-10-22-orange-agent: Shared server said 502: ai failed | mill-",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "aeba4fee344050c9d80859602a10cd230aa848a0",
@@ -69,11 +69,10 @@
   },
   "retry": [
     "blue-agent",
+    "control-troll",
     "smash-bender",
     "mohavetech-website",
-    "pdf-yourself",
     "2026-10-23-orange-smash",
-    "control-troll",
     "steward-repo",
     "field-twin",
     "itchy-troll",
