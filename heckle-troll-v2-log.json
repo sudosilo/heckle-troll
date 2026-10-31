@@ -1,6 +1,6 @@
 {
-  "lastChecked": "2026-10-31T07:27:40.601Z",
-  "lastError": "blue-agent: Shared server said 502: ai failed | control-troll: Shared server said 502: ai failed | mill-ionaire: Shared server said 502: ai failed | coffee-autosim: Shared server said 502: ai failed | mission-operator-next: Shared server said 502: ai failed | 2026-10-30-orange-scores: Shared server said 502: ai failed | gladhand-dockyard: Shared server said 502: ai failed | 2026-10-23-orange-smash: Shared server said 502: ai failed | song-offset-listener: Shared server said 502: ai failed | mohavetech-website: Shared server said 502: ai failed | itchy-troll: Shared server said 502: ai failed |",
+  "lastChecked": "2026-10-31T13:46:19.790Z",
+  "lastError": "blue-agent: Shared server said 502: ai failed | control-troll: Shared server said 502: ai failed | gladhand-dockyard: Shared server said 502: ai failed | 2026-10-23-orange-smash: Shared server said 502: ai failed | song-offset-listener: Shared server said 502: ai failed | smash-bender: Shared server said 502: ai failed | mohavetech-website: Shared server said 502: ai failed | itchy-troll: Shared server said 502: ai failed | edmia: Shared server said 502: ai failed | 2026-10-18-orange-testbed: Shared server said 502: ai failed | steward-repo: Shared server said 502: ai failed | field-twin: Shar",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "aeba4fee344050c9d80859602a10cd230aa848a0",
@@ -70,20 +70,22 @@
   "retry": [
     "blue-agent",
     "control-troll",
-    "mill-ionaire",
-    "coffee-autosim",
-    "mission-operator-next",
-    "2026-10-30-orange-scores",
     "gladhand-dockyard",
     "2026-10-23-orange-smash",
     "song-offset-listener",
+    "smash-bender",
     "mohavetech-website",
     "itchy-troll",
+    "edmia",
     "2026-10-18-orange-testbed",
-    "testbed-notes",
-    "sudosilo",
     "steward-repo",
     "field-twin",
+    "2026-10-30-orange-scores",
+    "mission-operator-next",
+    "sudosilo",
+    "mill-ionaire",
+    "coffee-autosim",
+    "testbed-notes",
     "2026-10-22-orange-agent"
   ],
   "heckles": [
