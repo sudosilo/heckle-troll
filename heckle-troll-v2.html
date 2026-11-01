@@ -146,6 +146,8 @@
   .spin { display: inline-block; animation: wob 0.6s infinite alternate; }
   @keyframes wob { from { transform: rotate(-8deg); } to { transform: rotate(8deg); } }
   .empty { color: var(--muted); font-style: italic; }
+  .say { padding: 6px 12px; font-size: 14px; margin-bottom: 8px; }
+  .say.on { background: var(--blue); color: #fff; }
   label.small { display: block; font-weight: 800; margin-bottom: 6px; }
 </style>
 </head>
@@ -175,6 +177,7 @@
   </div>
   <div class="card" id="roastCard" style="display:none">
     <h2 id="roastTitle">Roast</h2>
+    <button class="btn say" id="sayRoast">Play</button>
     <div class="roast" id="roastOut"></div>
   </div>
 </section>
@@ -189,6 +192,7 @@
   <div class="card" id="fleetCard" style="display:none">
     <h2>Fleet verdict</h2>
     <div class="meta" id="fleetMeta"></div>
+    <button class="btn say" id="sayFleet">Play</button>
     <div class="roast" id="fleetOut"></div>
   </div>
 </section>
@@ -200,6 +204,10 @@
     <div class="row">
       <button class="btn blue" id="hecklesLoad">Refresh</button>
       <button class="btn" id="pollNow">Check pushes now</button>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button class="btn" id="sayAll">Read all aloud</button>
+      <button class="btn blue" id="sayStop">Stop</button>
     </div>
     <p class="meta" id="heckleNote"></p>
     <div class="err" id="heckleErr"></div>
@@ -251,6 +259,29 @@
       p.textContent = t;
       el.appendChild(p);
     });
+  }
+
+  // Read heckles aloud with the phone's own voice. Text is split into sentences
+  // because some phone voices stop partway through a long chunk.
+  var sayQueue = [], sayBtn = null, heckleTexts = [];
+  function sayMark(b) { if (sayBtn) sayBtn.classList.remove("on"); sayBtn = b; if (b) b.classList.add("on"); }
+  function sayStop() { sayQueue = []; try { speechSynthesis.cancel(); } catch (e) {} sayMark(null); }
+  function sayNext() {
+    if (!sayQueue.length) { sayMark(null); return; }
+    var u = new SpeechSynthesisUtterance(sayQueue.shift());
+    u.lang = "en-US"; u.rate = 1.05;
+    u.onend = sayNext; u.onerror = sayNext;
+    speechSynthesis.speak(u);
+  }
+  function say(list, btn) {
+    if (!window.speechSynthesis) return;
+    sayStop(); sayMark(btn);
+    list.forEach(function (t) {
+      String(t || "").replace(/https?:\/\/\S+/g, "").replace(/\s+/g, " ").split(/(?<=[.!?])\s+/).forEach(function (p) {
+        if (p.trim()) sayQueue.push(p.trim());
+      });
+    });
+    sayNext();
   }
 
   function busy(btn, on, label) {
@@ -366,6 +397,7 @@
       var j = await readLog();
       var list = $("heckleList");
       list.innerHTML = "";
+      heckleTexts = [];
       if (!j.heckles || !j.heckles.length) {
         list.innerHTML = '<p class="empty">Nothing heckled yet.</p>';
         return;
@@ -379,7 +411,13 @@
         var body = document.createElement("div");
         body.className = "roast";
         renderRoast(body, h.text);
+        var spoken = String(h.repo || "").replace(/[-_]/g, " ") + ". " + (h.text || "");
+        heckleTexts.push(spoken);
+        var play = document.createElement("button");
+        play.className = "btn say"; play.textContent = "Play";
+        play.addEventListener("click", function () { say([spoken], play); });
         box.appendChild(meta);
+        box.appendChild(play);
         box.appendChild(body);
         if (h.url) {
           var a = document.createElement("a");
@@ -442,6 +480,10 @@
   $("fleetGo").addEventListener("click", fleet);
   $("hecklesLoad").addEventListener("click", loadHeckles);
   $("pollNow").addEventListener("click", pollNow);
+  $("sayAll").addEventListener("click", function () { say(heckleTexts, $("sayAll")); });
+  $("sayStop").addEventListener("click", sayStop);
+  $("sayRoast").addEventListener("click", function () { say([$("roastOut").innerText], $("sayRoast")); });
+  $("sayFleet").addEventListener("click", function () { say([$("fleetOut").innerText], $("sayFleet")); });
 
   loadRepos();
 })();
