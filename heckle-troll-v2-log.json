@@ -1,6 +1,6 @@
 {
-  "lastChecked": "2026-11-06T03:23:22.592Z",
-  "lastError": "blue-agent: Shared server said 502: ai failed | kat-chat: Shared server said 502: ai failed | mohavetech-website: Shared server said 502: ai failed | mill-ionaire: Shared server said 502: ai failed | control-troll: Shared server said 502: ai failed | 2026-11-05-locker-screen: Shared server said 502: ai failed | rainbow-run: Shared server said 502: ai failed | coffee-autosim: Shared server said 502: ai failed | mohave-wtf: Shared server said 502: ai failed | 2026-10-18-orange-testbed: Shared server said 502: ai failed | itchy-troll: Shared server said 502: ai failed | field-twin: Shared server ",
+  "lastChecked": "2026-11-06T11:13:51.235Z",
+  "lastError": "blue-agent: Shared server said 502: ai failed | mill-ionaire: Shared server said 502: ai failed | control-troll: Shared server said 502: ai failed | mohavetech-website: Shared server said 502: ai failed | coffee-autosim: Shared server said 502: ai failed | mohave-wtf: Shared server said 502: ai failed | 2026-10-18-orange-testbed: Shared server said 502: ai failed | itchy-troll: Shared server said 502: ai failed | field-twin: Shared server said 502: ai failed | sudosilo: Shared server said 502: ai failed | aliens-win: Shared server said 502: ai failed | fogwarren-vx: Shared server said 502: ai ",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "aeba4fee344050c9d80859602a10cd230aa848a0",
@@ -69,12 +69,9 @@
   },
   "retry": [
     "blue-agent",
-    "kat-chat",
-    "mohavetech-website",
     "mill-ionaire",
     "control-troll",
-    "2026-11-05-locker-screen",
-    "rainbow-run",
+    "mohavetech-website",
     "coffee-autosim",
     "mohave-wtf",
     "2026-10-18-orange-testbed",
