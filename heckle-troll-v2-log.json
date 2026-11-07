@@ -1,6 +1,6 @@
 {
-  "lastChecked": "2026-11-07T19:29:54.047Z",
-  "lastError": "control-troll: Shared server said 502: ai failed | blue-agent: Shared server said 502: ai failed | rainbow-run: Shared server said 502: ai failed | stompbox-lab: Shared server said 502: ai failed | pajamastan-badge-tool: Shared server said 502: ai failed | field-twin: Shared server said 502: ai failed | stinkin-badges: Shared server said 502: ai failed | 2026-10-18-orange-testbed: Shared server said 502: ai failed | itchy-troll: Shared server said 502: ai failed | pajamastan: Shared server said 502: ai failed | mill-ionaire: Shared server said 502: ai failed | mohave-wtf: Shared server said 50",
+  "lastChecked": "2026-11-07T22:54:22.016Z",
+  "lastError": "blue-agent: Shared server said 502: ai failed | rainbow-run: Shared server said 502: ai failed | stompbox-lab: Shared server said 502: ai failed | hire-portal: Shared server said 502: ai failed | field-twin: Shared server said 502: ai failed | field-twin-violet-api: Shared server said 502: ai failed | control-troll: Shared server said 502: ai failed | 2026-10-18-orange-testbed: Shared server said 502: ai failed | itchy-troll: Shared server said 502: ai failed | pajamastan: Shared server said 502: ai failed | mill-ionaire: Shared server said 502: ai failed | mohave-wtf: Shared server said 502: ",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "aeba4fee344050c9d80859602a10cd230aa848a0",
@@ -68,19 +68,18 @@
     "2026-10-20-orange-dialbeat": "48c33b6a4e49814ef82516f17c475bd4113dde43"
   },
   "retry": [
-    "control-troll",
     "blue-agent",
     "rainbow-run",
     "stompbox-lab",
-    "pajamastan-badge-tool",
+    "hire-portal",
     "field-twin",
-    "stinkin-badges",
+    "field-twin-violet-api",
+    "control-troll",
     "2026-10-18-orange-testbed",
     "itchy-troll",
     "pajamastan",
     "mill-ionaire",
     "mohave-wtf",
-    "field-twin-violet-api",
     "sudosilo",
     "coffee-autosim",
     "mohavetech-website",
