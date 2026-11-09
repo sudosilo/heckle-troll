@@ -1,6 +1,6 @@
 {
-  "lastChecked": "2026-11-08T23:09:58.139Z",
-  "lastError": "blue-agent: Shared server said 502: ai failed | control-troll: Shared server said 502: ai failed | pajamastan-space-administration: Shared server said 502: ai failed | 2026-10-18-orange-testbed: Shared server said 502: ai failed | itchy-troll: Shared server said 502: ai failed | stompbox-lab: Shared server said 502: ai failed | pajamastan: Shared server said 502: ai failed | field-twin: Shared server said 502: ai failed | sudosilo: Shared server said 502: ai failed | mill-ionaire: Shared server said 502: ai failed | mohave-wtf: Shared server said 502: ai failed | coffee-autosim: Shared server ",
+  "lastChecked": "2026-11-09T02:37:16.383Z",
+  "lastError": "blue-agent: Shared server said 502: ai failed | stackloom-meta: Shared server said 502: ai failed | ordersim: Shared server said 502: ai failed | pajamastan-space-administration: Shared server said 502: ai failed | control-troll: Shared server said 502: ai failed | 2026-10-18-orange-testbed: Shared server said 502: ai failed | itchy-troll: Shared server said 502: ai failed | stompbox-lab: Shared server said 502: ai failed | pajamastan: Shared server said 502: ai failed | field-twin: Shared server said 502: ai failed | sudosilo: Shared server said 502: ai failed | mill-ionaire: Shared server sa",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "aeba4fee344050c9d80859602a10cd230aa848a0",
@@ -69,8 +69,10 @@
   },
   "retry": [
     "blue-agent",
-    "control-troll",
+    "stackloom-meta",
+    "ordersim",
     "pajamastan-space-administration",
+    "control-troll",
     "2026-10-18-orange-testbed",
     "itchy-troll",
     "stompbox-lab",
