@@ -1,6 +1,6 @@
 {
-  "lastChecked": "2026-11-12T04:18:38.932Z",
-  "lastError": "blue-agent: Shared server said 502: ai failed | control-troll: Shared server said 502: ai failed | song-offset-listener: Shared server said 502: ai failed | itchy-troll: Shared server said 502: ai failed | delivery-twin: Shared server said 502: ai failed | mill-ionaire: Shared server said 502: ai failed | field-twin: Shared server said 502: ai failed | pajamastan: Shared server said 502: ai failed | tractor-tool: Shared server said 502: ai failed | torque-converter: Shared server said 502: ai failed | parcelsun-kq: Shared server said 502: ai failed | 2026-10-18-orange-testbed: Shared server sa",
+  "lastChecked": "2026-11-12T12:51:30.964Z",
+  "lastError": "blue-agent: Shared server said 502: ai failed | control-troll: Shared server said 502: ai failed | song-offset-listener: Shared server said 502: ai failed | itchy-troll: Shared server said 502: ai failed | mill-ionaire: Shared server said 502: ai failed | field-twin: Shared server said 502: ai failed | pajamastan: Shared server said 502: ai failed | tractor-tool: Shared server said 502: ai failed | torque-converter: Shared server said 502: ai failed | parcelsun-kq: Shared server said 502: ai failed | 2026-10-18-orange-testbed: Shared server said 502: ai failed | field-twin-violet-api: Shared s",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "aeba4fee344050c9d80859602a10cd230aa848a0",
@@ -72,7 +72,6 @@
     "control-troll",
     "song-offset-listener",
     "itchy-troll",
-    "delivery-twin",
     "mill-ionaire",
     "field-twin",
     "pajamastan",
