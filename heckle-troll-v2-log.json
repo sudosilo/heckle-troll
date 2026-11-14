@@ -1,6 +1,6 @@
 {
-  "lastChecked": "2026-11-13T22:05:06.161Z",
-  "lastError": "blue-agent: Shared server said 502: ai failed | artifactium: Shared server said 502: ai failed | delivery-twin: Shared server said 502: ai failed | city-seek: Shared server said 502: ai failed | itchy-troll: Shared server said 502: ai failed | field-twin: Shared server said 502: ai failed | control-troll: Shared server said 502: ai failed | skyflow-orange: Shared server said 502: ai failed | 2026-10-18-orange-testbed: Shared server said 502: ai failed | mill-ionaire: Shared server said 502: ai failed | parcelsun-kq: Shared server said 502: ai failed | pajamastan: Shared server said 502: ai fai",
+  "lastChecked": "2026-11-14T02:16:07.815Z",
+  "lastError": "blue-agent: Shared server said 502: ai failed | control-troll: Shared server said 502: ai failed | city-seek: Shared server said 502: ai failed | delivery-twin: Shared server said 502: ai failed | hoofer-sync: Shared server said 502: ai failed | delivery-twin-violet: Shared server said 502: ai failed | artifactium: Shared server said 502: ai failed | itchy-troll: Shared server said 502: ai failed | field-twin: Shared server said 502: ai failed | 2026-10-18-orange-testbed: Shared server said 502: ai failed | mill-ionaire: Shared server said 502: ai failed | parcelsun-kq: Shared server said 502:",
   "heads": {
     "2026-10-22-orange-agent": "8f76f2ae1353e34b772583b149d20e61a42d3551",
     "purple-agent": "aeba4fee344050c9d80859602a10cd230aa848a0",
@@ -69,13 +69,14 @@
   },
   "retry": [
     "blue-agent",
-    "artifactium",
-    "delivery-twin",
+    "control-troll",
     "city-seek",
+    "delivery-twin",
+    "hoofer-sync",
+    "delivery-twin-violet",
+    "artifactium",
     "itchy-troll",
     "field-twin",
-    "control-troll",
-    "skyflow-orange",
     "2026-10-18-orange-testbed",
     "mill-ionaire",
     "parcelsun-kq",
